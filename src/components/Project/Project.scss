@@ -1,40 +1,57 @@
 .project-page {
   padding-left: 6em;
-  width: calc(100% - 150px);
-  position: initial;
-  height: 100%;
-  overflow: hidden;
+  padding-right: 4em;
+  padding-bottom: 4em;
+  width: 100%;
+  height: 100vh;
+  overflow-y: auto;
   cursor: default;
+  box-sizing: border-box;
+
+  @media screen and (max-width: 1024px) {
+    padding-left: 0;
+  }
 
   h1.page-title {
-    margin-left: 60px;
-    margin-top: 100px;
+    margin-left: 100px;
+    margin-top: 90px;
+    color: #ffd700;
+
+
+    @media screen and (max-width: 1024px) {
+      margin-left: 60px;
+      margin-top: 20px;
+    }
   }
 
   .project-list {
     display: flex;
-    gap: 15px;
-    padding-bottom: 100px;
-    overflow-x: auto; /* Enable horizontal scrolling */
-    scroll-snap-type: x mandatory;
-    margin-top: -30px;
-    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    flex-direction: column;
+    gap: 3em;
+    margin-bottom: 2em;
+    margin-left: 12em;
+    margin-top: 4em;
+    overflow-y: visible;
 
-    /* Hide scrollbar in WebKit-based browsers */
-    &::-webkit-scrollbar {
-      display: none;
+    @media screen and (max-width: 1024px) {
+      margin-left: 5em;
+      margin-top: 0;
+      padding-left: 0;
+      padding-right: 0;
+      
     }
 
     .project-item {
       position: relative;
-      flex: 0 0 300px; /* Fixed width for horizontal scroll */
-      margin-top: 70px;
-      height: 300px;
-      width: auto; /* Ensure consistent width for all items */
-      overflow: hidden;
+      height: 700px;
       border-radius: 10px;
-      scroll-snap-align: start; /* Align items for snapping */
-      transition: transform 0.3s ease; /* Smooth hover transition */
+      overflow: hidden;
+      transition: transform 0.3s ease;
+
+      @media screen and (max-width: 1024px) {
+        height: 500px;
+      }
+
       &:hover {
         transform: translateY(-5px);
         box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
@@ -45,44 +62,70 @@
         height: 100%;
         object-fit: cover;
         border-radius: 8px;
-        z-index: 2;
+        z-index: 1;
         position: absolute;
+        transition: filter 0.3s ease;
       }
 
-      .project-details {
+      .project-image.blurred {
+        filter: blur(5px);
+      }
+
+      .overlay {
         position: absolute;
+        z-index: 2;
         width: 100%;
-        z-index: 3;
         height: 100%;
         padding: 10px 20px;
         bottom: 0;
-        background: linear-gradient(
-          180deg,
-          rgba(0, 0, 0, 0.2) 0,
-          rgba(0, 0, 0, 1)
-        );
-        transition: all 0.3s ease;
+        background: rgba(0, 0, 0, 0.6);
+        opacity: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+        text-align: center;
+
+        @media screen and (max-width: 480px) {
+          padding: 10px;
+        }
+
+        @media screen and (max-width: 4768px) {
+          padding: 7px;
+        }
 
         .title {
-          font-size: 24px;
-          font-weight: 900;
+          font-size: 100px;
+          font-weight: 700;
           color: #fff;
           margin-bottom: 10px;
-          margin-top: 9.5em;
-          transition: all 0.3s ease;
+          text-align: center;
+
+          @media screen and (max-width: 768px) {
+            font-size: 80px;
+          }
+          @media screen and (max-width: 480px) {
+            font-size: 30px;
+          }
         }
 
         .tech-stack {
           display: flex;
           flex-wrap: wrap;
           gap: 5px;
-          margin-top: 10px;
+          // margin-top: 10px;
 
           .tech-item {
-            padding: 2px 2px;
+            padding: 2px 4px;
             border-radius: 5px;
-            font-size: 14px;
+            font-size: 20px;
             color: #fff;
+
+            @media screen and (max-width: 480px) {
+              font-size: 15px;
+            }
           }
         }
 
@@ -93,14 +136,21 @@
 
           .btn {
             color: #ffd700;
-            font-size: 14px;
+            font-size: 17px;
             border: 2px solid #ffd700;
             font-weight: 600;
+            border-radius: 5px;
             background: transparent;
             padding: 7px 10px;
             text-decoration: none;
             transition: transform 0.3s, background-color 0.3s, color 0.3s;
             cursor: pointer;
+
+            @media screen and (max-width: 480px) {
+              font-size: 12px;
+              padding: 5px 8px;
+            }
+
             &:hover {
               background-color: #ffd700;
               color: #022C43;
@@ -109,9 +159,10 @@
           }
         }
       }
-      &:hover .title {
-        margin-top: 6em;
-        transform: translateY(-5px);
+
+      &:hover .overlay {
+        opacity: 1;
+        pointer-events: auto;
       }
 
       &:after {
@@ -121,10 +172,10 @@
         right: 0;
         top: 0;
         bottom: 0;
-        background: linear-gradient(180deg, #ffd700, #000);
+        background: linear-gradient(180deg, #3e360b, #000);
         opacity: 0;
         transition: opacity 0.3s ease;
-        z-index: 1;
+        z-index: 0;
       }
 
       &:hover:after {
@@ -134,16 +185,50 @@
   }
 }
 
-@media screen and (max-width: 1200px) {
-  .container.project-page{
-    box-sizing: border-box;
-    width: 100%;
-    padding-left: 2em;
-    padding-right: 2em;
+// Responsive layout for mobile and tablets
+@media screen and (max-width: 768px) {
+  .container.project-page {
+    padding-left: 1.5em;
+    padding-right: 1.5em;
 
-    h1.page-title{
-      padding-left: -6em;
+    h1.page-title {
+      margin-left: 40px;
       margin-top: 20px;
+      text-align: start;
+    }
+
+    .project-list {
+      padding-left: 4em;
+      padding-right: 2em;
+      margin-left: 0;
+      margin-top: 0;
+    }
+    .project-item {
+      height: 400px;
     }
   }
+}
+
+@media screen and (max-width: 480px) {
+  .container.project-page {
+    padding-left: 1em;
+    padding-right: 1em;
+
+    h1.page-title {
+      margin-left: 20px;
+      margin-top: 10px;
+      text-align: start;
+    }
+
+    .project-list {
+      padding-left: 2em;
+      padding-right: 1em;
+      margin-left: 0;
+      margin-top: 0;
+    }
+    .project-item {
+      height: 200px;
+    }
+  }
+  
 }

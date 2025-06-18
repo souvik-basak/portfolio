@@ -1,6 +1,7 @@
-import Loader from "react-loaders";
+
 import "./Portfolio.scss";
 import AnimatedLetters from "../Animation/Animation";
+import dragSoundSrc from "../../assets/music/dragSound.mp3";
 import { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
 
@@ -10,6 +11,14 @@ const skills = [
   "JavaScript",
   "React",
   "Node.js",
+  "Next.js",
+  "Express.js",
+  "SQL",
+  "MongoDB",
+  "Git",
+  "GitHub",
+  "npm",
+  "pnpm",
   "TypeScript",
   "GraphQL",
   "Sass",
@@ -35,6 +44,7 @@ const skillVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 };
 const Portfolio = () => {
+  const audioRef = useRef(null);
   const [showAlert, setShowAlert] = useState(true);
   const [letterClass, setLetterClass] = useState("text-animate");
   const containerRef = useRef(null);
@@ -68,6 +78,26 @@ const Portfolio = () => {
 
     return () => clearTimeout(timer); 
   }, []);
+
+  useEffect(() => {
+    audioRef.current = new Audio(dragSoundSrc);
+    audioRef.current.volume = 0.05; // Set volume low for subtlety
+    audioRef.current.preload = "auto";
+  }, []);
+
+  const handleDragStart = () => {
+    if (audioRef.current) {
+      audioRef.current.currentTime = 0;
+      audioRef.current.play().catch(() => {});
+    }
+  };
+
+  const handleDragEnd = () => {
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+    }
+  };
 
   return (
     <div>
@@ -123,6 +153,8 @@ const Portfolio = () => {
                 className="skill-item"
                 variants={skillVariants}
                 drag
+                onDragStart={handleDragStart}
+                onDragEnd={handleDragEnd}
                 dragConstraints={dragConstraints}
                 dragElastic={1}
                 dragTransition={{
@@ -152,7 +184,6 @@ const Portfolio = () => {
           </motion.div>
         </div>
       </div>
-      <Loader type="ball-pulse-sync" />
     </div>
   );
 };

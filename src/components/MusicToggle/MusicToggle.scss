@@ -1,0 +1,50 @@
+.music-toggle-container {
+  position: fixed;
+  top: 10px;
+  right: 60px;
+  z-index: 9;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  opacity: 0.9;
+
+  @media (max-width: 1200px) {
+    top: 20px;
+  }
+}
+
+
+.music-toggle {
+  width: 30px;
+  height: 15px;
+  border-radius: 20px;
+  background: #333;
+  display: flex;
+  align-items: center;
+  padding: 3px;
+  cursor: pointer;
+  position: relative;
+}
+
+.toggle-circle {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #ffd700;
+  position: absolute;
+  left: 3px;
+  transition: all 0.3s ease;
+}
+
+.volume-slider {
+  height: 4px;
+  accent-color: #ffd700;
+  transition: all 0.3s ease;
+}
+
+.sound-label{
+  font-size: 1.3rem;
+  color: #fff;
+  letter-spacing: normal;
+  font-family: monospace;
+}

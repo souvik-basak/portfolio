@@ -15,11 +15,11 @@
   }
 }
 .skills-container{
-  width: 50%;
+  width: 60%;
   height: 100%;
   position: absolute;
-  top: 50%;
-  left: 70%;
+  top: 53%;
+  left: 68%;
   transform: translate(-50%, -50%);
   display: flex;
   flex-wrap: wrap;
@@ -74,10 +74,10 @@
 }
 
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1024px) {
   .container.portfolio-page .text-zone {
     width: 55%;
-    left: 10%;
+    left: 13%;
     top: 45%;
     font-size: 15px;
   }
@@ -86,7 +86,7 @@
     width: 60%;
     left: 65%;
     gap: 18px;
-    top: 55%;
+    top: 52%;
   }
 
   .skill-item {
@@ -148,6 +148,28 @@
     width: 90%;
     left: 50%;
     top: 45%;
+    transform: translateX(-50%);
+    gap: 10px;
+  }
+
+  .skill-item {
+    padding: 5px 8px;
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .container.portfolio-page .text-zone {
+    width: 90%;
+    left: 5%;
+    top: 30%;
+    font-size: 13px;
+  }
+
+  .container.portfolio-page .skills-container {
+    width: 90%;
+    left: 50%;
+    top: 50%;
     transform: translateX(-50%);
     gap: 10px;
   }

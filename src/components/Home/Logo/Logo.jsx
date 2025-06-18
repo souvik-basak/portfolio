@@ -68,6 +68,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import LogoS from "../../../assets/images/logo-s.png";
+
 import "./Logo.scss";
 
 const Logo = () => {
@@ -95,39 +96,39 @@ const Logo = () => {
   }, []);
 
   // Hover effect for 3D rotation
-  useEffect(() => {
-    const logoElement = solidLogoRef.current;
+  // useEffect(() => {
+  //   const logoElement = solidLogoRef.current;
 
-    const onHover = () => {
-      gsap.to(logoElement, {
-        // rotationY: 25,
-        rotationX: 25,
-        scale: 1.1, // Slightly enlarge the logo on hover
-        duration: 0.3, // Duration of the hover animation
-        ease: "power3.out",
-      });
-    };
+  //   const onHover = () => {
+  //     gsap.to(logoElement, {
+  //       // rotationY: 25,
+  //       rotationX: 25,
+  //       scale: 1.1, // Slightly enlarge the logo on hover
+  //       duration: 0.3, // Duration of the hover animation
+  //       ease: "power3.out",
+  //     });
+  //   };
 
-    const onLeave = () => {
-      gsap.to(logoElement, {
-        rotationY: 0,
-        rotationX: 0,
-        scale: 1, // Reset the scale
-        duration: 0.3, // Duration of the leave animation
-        ease: "power3.inOut",
-      });
-    };
+  //   const onLeave = () => {
+  //     gsap.to(logoElement, {
+  //       rotationY: 0,
+  //       rotationX: 0,
+  //       scale: 1, // Reset the scale
+  //       duration: 0.3, // Duration of the leave animation
+  //       ease: "power3.inOut",
+  //     });
+  //   };
 
-    // Add event listeners
-    logoElement.addEventListener("mouseenter", onHover);
-    logoElement.addEventListener("mouseleave", onLeave);
+  //   // Add event listeners
+  //   logoElement.addEventListener("mouseenter", onHover);
+  //   logoElement.addEventListener("mouseleave", onLeave);
 
-    return () => {
-      // Clean up event listeners
-      logoElement.removeEventListener("mouseenter", onHover);
-      logoElement.removeEventListener("mouseleave", onLeave);
-    };
-  }, []);
+  //   return () => {
+  //     // Clean up event listeners
+  //     logoElement.removeEventListener("mouseenter", onHover);
+  //     logoElement.removeEventListener("mouseleave", onLeave);
+  //   };
+  // }, []);
 
   return (
     <div className="logo-container" ref={bgRef}>
@@ -145,6 +146,7 @@ const Logo = () => {
         viewBox="0 0 559 897"
         xmlns="http://www.w3.org/2000/svg"
         className="svg-cont"
+        style={{ opacity: 0 }} // Initially hidden
       >
         <g
           className="svg-container"

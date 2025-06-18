@@ -1,4 +1,4 @@
-.nav-bar{
+.nav-bar {
   background: #181818;
   width: 80px;
   height: 100vh;
@@ -7,22 +7,24 @@
   top: 0;
   z-index: 3;
   min-height: 500px;
-  .logo{
+
+  .logo {
     display: block;
     padding: 8px 0;
 
-    img{
+    img {
       display: block;
       margin: 8px auto;
       width: 35px;
       height: auto;
 
-      &.sub-logo{
+      &.sub-logo {
         width: 50px;
       }
     }
   }
-  nav{
+
+  nav {
     display: block;
     text-align: center;
     position: absolute;
@@ -30,7 +32,8 @@
     top: 50%;
     margin-top: -120px;
     width: 100%;
-    a{
+
+    a {
       font-size: 22px;
       color: #4d4d4e;
       display: block;
@@ -39,22 +42,24 @@
       position: relative;
       text-decoration: none;
 
-      i{
+      i {
         transition: all 0.3s ease-out;
       }
 
-      &:hover{
+      &:hover {
         color: #ffd700;
 
-        svg{
+        svg {
           opacity: 0;
         }
-        &:after{
+
+        &:after {
           opacity: 1;
         }
       }
-      &:after{
-        content: '';
+
+      &:after {
+        content: "";
         font-size: 9px;
         letter-spacing: 2px;
         position: absolute;
@@ -63,42 +68,45 @@
         width: 100%;
         text-align: center;
         opacity: 0;
-        -webkit-transition: all 0.3s ease-out;
         transition: all 0.3s ease-out;
-        }
-        &:first-child{
-          &:after{
-            content: 'HOME';
-          }
-        }
-    }
-    a.about-link{
-      &::after{
-        content: 'ABOUT';
       }
     }
-    a.contact-link{
-      &::after{
-        content: 'CONTACT';
-      }
+
+    a.home-link::after {
+      content: "HOME";
     }
-    a.portfolio-link{
-      &::after{
-        content: 'PORTFOLIO';
-      }
+
+    a.about-link::after {
+      content: "ABOUT";
     }
-    a.project-link{
-      &::after{
-        content: 'PROJECTS';
-      }
+
+    a.contact-link::after {
+      content: "CONTACT";
     }
-    a.active{
-      svg{
-        color: #ffd700;
-      }
+
+    a.portfolio-link::after {
+      content: "PORTFOLIO";
+    }
+
+    a.project-link::after {
+      content: "PROJECTS";
+    }
+
+    a.active svg {
+      color: #ffd700;
+    }
+
+    a.active:after {
+      opacity: 0;
+      color: #ffd700;
+    }
+
+    .mobile-socials {
+      display: none;
     }
   }
-  ul{
+
+  ul {
     position: absolute;
     bottom: 20px;
     width: 100%;
@@ -107,71 +115,110 @@
     list-style: none;
     text-align: center;
     margin: 0;
-    li{
-      a{
-        padding: 7px 0;
-        display: block;
-        font-size: 15px;
-        line-height: 16px;
 
-        &:hover svg{
-          color: #ffd700;
-        }
+    li a {
+      padding: 7px 0;
+      display: block;
+      font-size: 15px;
+      line-height: 16px;
+
+      &:hover svg {
+        color: #ffd700;
       }
     }
   }
-  .burger-icon,.close-icon{
+
+  .burger-icon,
+  .close-icon {
     display: none;
   }
 }
 
-@media screen and (max-width: 1200px){
-  .nav-bar{
+// Hide desktop social icons on mobile
+@media screen and (max-width: 1024px) {
+  .nav-bar {
     background: transparent;
     position: initial;
     height: auto;
-    min-height: auto;
-    ul,nav{
+    min-height: 50%;
+
+    ul {
       display: none;
     }
-    nav{
-      // display: block;
+
+    nav {
       width: 100%;
-      height: 50%;
-      // margin-top: 30px;
+      height: auto;
       background: #181818;
       top: 0;
       left: 0;
       position: fixed;
       z-index: 2;
       margin: 0;
-      a{
-        margin-top: 10px;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 50px;
+      border-radius: 0 0 12px 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+
+      a.active:after {
+        opacity: 1;
+        color: #ffd700;
+      }
+
+      a {
         display: flex;
         justify-content: center;
         align-items: center;
+        color: #4d4d4e;
+        text-decoration: none;
       }
-      a:after{
+
+      a:after {
         opacity: 1;
         position: initial;
         width: auto;
         margin-left: 10px;
       }
-      a svg{
+
+      a svg {
         opacity: 1 !important;
       }
-      &.mobile-show{
-        display: block;
+
+      &.mobile-show {
+        display: flex;
+      }
+
+      .mobile-socials {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-top: auto;
+        padding: 20px 0;
+
+        a svg {
+          color: #4d4d4e;
+          font-size: 20px;
+          transition: all 0.3s ease;
+        }
+
+        a:hover svg {
+          color: #ffd700;
+        }
       }
     }
-    .burger-icon,.close-icon{
+
+    .burger-icon,
+    .close-icon {
       display: block;
       position: absolute;
       top: 15px;
       cursor: pointer;
       right: 15px;
     }
-    .close-icon:active{
+
+    .close-icon:active {
       transform: scale(0.9);
     }
   }

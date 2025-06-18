@@ -36,7 +36,7 @@
 .logo-container {
   z-index: 0;
   width: 400px;
-  height: 609px;
+  height: 642px;
   position: absolute;
   top: 0;
   right: 15%;
@@ -62,6 +62,13 @@
     opacity: 0;
     z-index: 1;
     transition: transform 0.6s ease-in-out;
+
+    @media screen and (max-width:1200px) and (min-width: 780px) {
+      width: auto;
+      height: 100%;
+      top: 125px;
+      left: 300px;
+    }
   }
 }
 

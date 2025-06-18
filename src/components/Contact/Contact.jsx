@@ -1,9 +1,10 @@
 import AnimatedLetters from "../Animation/Animation";
 import "./Contact.scss";
-import Loader from "react-loaders";
+import { toast } from "react-hot-toast";
 import { useState, useEffect, useRef } from "react";
 import emailjs from "@emailjs/browser";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import EncryptButton from "../EncryptButton/EncryptButton";
 
 const Contact = () => {
   const [letterClass, setLetterClass] = useState("text-animate");
@@ -15,22 +16,20 @@ const Contact = () => {
   }, []);
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    emailjs
-      .sendForm(
+    toast.promise(
+      emailjs.sendForm(
         "service_907am0x",
         "template_mzvsyui",
         refForm.current,
         "48deWTLr8fCnftS87"
-      )
-      .then(() => {
-        alert("Message sent successfully");
-        // window.location.reload();
-        refForm.current.reset();
-      })
-      .catch(() => {
-        alert("Message failed to send, please try again");
-      });
+      ),
+      {
+        loading: "Sending message...",
+        success: "Message sent successfully!",
+        error: "Message failed to send, please try again",
+      }
+    );
+    refForm.current.reset();
   };
   return (
     <div>
@@ -44,11 +43,11 @@ const Contact = () => {
             />
           </h1>
           <p>
-            I'm actively seeking exciting frontend development opportunities to
-            contribute my skills to ambitious and large-scale projects. If
-            there's an entry-level opportunity to discuss this further or if you
-            know of any openings, don't hesitate to contact me using below form
-            either.
+            I&apos;m actively seeking exciting frontend development
+            opportunities to contribute my skills to ambitious and large-scale
+            projects. If there&apos;s an entry-level opportunity to discuss this
+            further or if you know of any openings, don&apos;t hesitate to
+            contact me using below form either.
           </p>
           <div className="contact-form">
             <form ref={refForm} onSubmit={handleSubmit}>
@@ -89,7 +88,11 @@ const Contact = () => {
                   />
                 </li>
                 <li>
-                  <input type="submit" value="SEND" className="flat-button" />
+                  <EncryptButton
+                    text="SEND"
+                    color="indigo"
+                    onClick={handleSubmit}
+                  />
                 </li>
               </ul>
             </form>
@@ -123,7 +126,6 @@ const Contact = () => {
           </MapContainer>
         </div>
       </div>
-      <Loader type="ball-pulse-sync" />
     </div>
   );
 };

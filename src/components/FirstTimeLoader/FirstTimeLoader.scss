@@ -1,0 +1,48 @@
+.first-time-loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #01141f;
+  color: #ffd700;
+  font-family: monospace;
+
+  .icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    color: #ffd9006f;
+  }
+
+  .headphone-text {
+    font-size: 1.2rem;
+    align-items: center;
+    margin-top: 10px;
+    color: #cccccc62;
+  }
+
+
+  .intro-text {
+    font-size: 2rem;
+    margin-top: 0px;
+    text-align: center;
+    max-width: 80%;
+    color: #f4de63a5;
+  }
+
+  .loader-bar-wrapper {
+    width: 30%;
+    height: 10px;
+    background-color: #4d4d4e;
+    margin-top: 0px;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+
+  .loader-bar {
+    height: 100%;
+    background-color: #ffd9006f;
+  }
+}

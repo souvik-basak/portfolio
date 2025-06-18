@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
 import { gsap } from "gsap";
+import { motion, useViewportScroll, useTransform } from "framer-motion";
 import "./Project.scss";
 import AnimatedLetters from "../Animation/Animation";
-import Loader from "react-loaders";
 
-// Import local images
 import diceGameImg from "../../data/project-img/dice-game.png";
 import currencyConverterImg from "../../data/project-img/currency-converter.jpg";
-import notesAppImg from "../../data/project-img/notes-app.png"
-import ChatterBoxImg from "../../data/project-img/chatterbox.png"
+import notesAppImg from "../../data/project-img/notes-app.png";
+import ChatterBoxImg from "../../data/project-img/chatterbox.png";
 
 const projects = [
   {
@@ -49,6 +48,58 @@ const projects = [
   },
 ];
 
+const ProjectItem = ({ project, index }) => {
+  const { scrollY } = useViewportScroll();
+  const maxOffset = -40 - index * 10; // parallax offset varies per item
+  const y = useTransform(scrollY, [0, 600], [0, maxOffset]);
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <motion.div
+      className="project-item"
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: index * 0.2, duration: 0.8 }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      style={{
+        scale: isHovered ? 1.05 : 1,
+        boxShadow: isHovered ? "0 15px 30px rgba(0,0,0,0.3)" : "none",
+      }}
+    >
+      <motion.img
+        src={project.image}
+        alt={project.name}
+        className="project-image"
+        style={{ y, filter: isHovered ? "blur(5px)" : "none" }}
+        whileHover={{ scale: 1.1 }}
+        transition={{ type: "spring", stiffness: 300 }}
+      />
+<div className={`overlay ${isHovered ? "show" : ""}`}>
+  <h2 className="title">{project.name}</h2>
+  <div className="tech-stack">
+    {project.tech.map((tech, idx) => (
+      <span key={idx} className="tech-item">
+        {tech}
+      </span>
+    ))}
+  </div>
+  <div className="project-buttons">
+    <button className="btn" onClick={() => window.open(project.url)}>
+      View
+    </button>
+    <button className="btn" onClick={() => window.open(project.github)}>
+      GitHub
+    </button>
+  </div>
+</div>
+
+    </motion.div>
+  );
+};
+
+
+
 const Project = () => {
   const [letterClass, setLetterClass] = useState("text-animate");
 
@@ -67,36 +118,6 @@ const Project = () => {
     );
   }, []);
 
-  const renderProject = () => {
-    return (
-      <div className="project-list">
-        {projects.map((project) => (
-          <div key={project.id} className="project-item">
-            <img
-              src={project.image}
-              alt={project.name}
-              className="project-image"
-            />
-            <div className="project-details">
-              <h2 className="title">{project.name}</h2>
-              <div className="tech-stack">
-                {project.tech.map((tech, idx) => (
-                  <span key={idx} className="tech-item">
-                    {tech}
-                  </span>
-                ))}
-              </div>
-              <div className="project-buttons">
-                <button className="btn" onClick={()=>window.open(project.url)}>View</button>
-                <button className="btn" onClick={()=>window.open(project.github)}>GitHub</button>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    );
-  };
-
   return (
     <div>
       <div className="container project-page">
@@ -107,9 +128,12 @@ const Project = () => {
             idx={15}
           />
         </h1>
-        {renderProject()}
+        <div className="project-list">
+          {projects.map((project, index) => (
+            <ProjectItem key={project.id} project={project} index={index} />
+          ))}
+        </div>
       </div>
-      <Loader type="ball-pulse-sync" />
     </div>
   );
 };

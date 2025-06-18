@@ -61,12 +61,12 @@ h2 {
 
 .btn-set {
   display: flex;
-  gap: 4em;
+  padding-top: 2em;
+  gap: 2em;
 }
 .flat-button {
   color: #ffd700;
   font-size: 14px;
-  border: 2px solid #ffd700;
   font-weight: 600;
   letter-spacing: 4px;
   font-family: sans-serif;
@@ -113,6 +113,7 @@ h2 {
       margin-top: 80px;
       width: 90%;
       //position: initial;
+      
       transform: none;
       padding: 10px;
       box-sizing: border-box;
@@ -140,7 +141,9 @@ h2 {
     .flat-button {
       float: none;
       margin-left: 25%;
+      border: #ffd700 solid 2px;
     }
+    
     .logo-container {
       position: relative;
       width: 100px;
@@ -156,15 +159,13 @@ h2 {
       }
     }
   }
-}
+};
 
 @media screen and (max-width: 1024px) {
   .home-page {
     .text-zone {
-      margin-left: 10%;
       margin-top: 80px;
       width: 80%;
-      // position: initial;
       transform: none;
       padding: 10px;
       box-sizing: border-box;
@@ -185,8 +186,10 @@ h2 {
         margin-left: 15px;
       }
     }
-    h2 {
-      margin-left: -50px;
+    .btn-set{
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .flat-button {
       float: none;
@@ -216,14 +219,15 @@ h2 {
   .home-page {
     .text-zone {
       top: 80%;
-      left: 10%;
       width: 80%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       h1 {
-        font-size: 30px;
-        margin-left: 50px;
+        font-size: 35px;
         &::before {
           margin-top: -20px;
-          margin-left: 50px;
+          margin-left: 140px;
         }
         &::after {
           margin-top: 40px;
@@ -237,7 +241,11 @@ h2 {
       h2 {
         margin-top: 70px;
         margin-bottom: 40px;
-        margin-left: -80px;
+        font-size: 15px;
+        padding-left: 4em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
       .flat-button {
         float: none;
@@ -249,15 +257,15 @@ h2 {
 @media screen and (max-width: 480px) {
   .home-page {
     .text-zone {
-      top: 40%;
-      left: 5%;
-      width: 80%;
+      top: 50%;
+      width: 90%;
       h1 {
-        font-size: 25px;
-        margin-left: -5px;
+        font-size: 26px;
+        margin-top: 30px;
+        padding-left: 0;
         &::before {
           margin-top: -20px;
-          margin-left: -5px;
+          margin-left: 40px;
         }
         &::after {
           margin-top: 40px;
@@ -271,7 +279,7 @@ h2 {
       h2 {
         margin-top: 70px;
         margin-bottom: 40px;
-        margin-left: -32px;
+        padding-left: 0;
       }
       .flat-button {
         float: none;
@@ -281,8 +289,11 @@ h2 {
     .btn-set {
       display: flex;
       flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-right: 2.5em;
       gap: 20px;
-      margin-left: 20px;
+      
 
       .flat-button {
         margin-left: 30px;

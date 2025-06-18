@@ -4,7 +4,7 @@ import LogoTitle from "../../assets/images/logo-s.png";
 import { Link } from "react-router-dom";
 import AnimatedLetters from "../Animation/Animation";
 import Logo from "./Logo/Logo";
-import Loader from "react-loaders";
+import EncryptButton from "../EncryptButton/EncryptButton";
 
 const Home = () => {
   const [letterClass, setLetterClass] = useState("text-animate");
@@ -61,21 +61,19 @@ const Home = () => {
           </h1>
           <h2>Frontend Developer / JavaScript Expert / ReactJS Developer</h2>
           <div className="btn-set">
-            <Link to="/contact" className="flat-button">
-              CONTACT ME
+            <Link to="/contact">
+              <EncryptButton text="CONTACT ME"/>
             </Link>
             <Link
               to="https://drive.google.com/file/d/1OrVD93uz_V_rK5s_7fpJSHbFR8kVpdnL/view?usp=sharing"
               target="_blank"
-              className="cv-button"
             >
-              VIEW RESUME
+              <EncryptButton text="VIEW RESUME" />
             </Link>
           </div>
         </div>
         <Logo />
       </div>
-      <Loader type="ball-pulse-sync" />
     </>
   );
 };
