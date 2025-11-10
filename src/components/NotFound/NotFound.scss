@@ -1,0 +1,104 @@
+/* NotFound improved styling */
+
+.notfound-root {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1rem;
+  background: radial-gradient(
+      1200px 600px at 10% 10%,
+      rgba(255, 215, 0, 0.03),
+      transparent 10%
+    ),
+    linear-gradient(180deg, rgba(2, 44, 67, 1) 0%, rgba(1, 22, 34, 1) 100%);
+}
+
+.notfound-card {
+  max-width: 820px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  padding: clamp(24px, 4vw, 48px);
+  border-radius: 14px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(2, 12, 23, 0.6);
+  -webkit-backdrop-filter: blur(6px) saturate(120%);
+  backdrop-filter: blur(6px) saturate(120%);
+}
+
+.notfound-illustration {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.6rem;
+}
+
+.notfound-code {
+  font-size: clamp(64px, 16vw, 160px);
+  line-height: 0.9;
+  margin: 0;
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: -2px;
+  text-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+}
+
+.notfound-message {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.05rem;
+  margin: 12px 0 20px 0;
+}
+
+.notfound-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.notfound-cta {
+  display: inline-block;
+  background: linear-gradient(90deg, #ffd700, #ffb400);
+  color: #071223;
+  padding: 0.65rem 1.1rem;
+  border-radius: 10px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 8px 20px rgba(255, 181, 0, 0.12),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.06);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.notfound-cta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 30px rgba(255, 181, 0, 0.16);
+}
+
+.notfound-link {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.5rem 0.9rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.12s ease;
+}
+
+.notfound-link:hover {
+  background: rgba(255, 255, 255, 0.02);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 520px) {
+  .notfound-card {
+    padding: 20px;
+  }
+  .notfound-actions {
+    gap: 8px;
+  }
+  .notfound-code {
+    font-size: clamp(48px, 28vw, 96px);
+  }
+}

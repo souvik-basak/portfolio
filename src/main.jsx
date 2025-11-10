@@ -8,27 +8,16 @@ import Contact from "./components/Contact/Contact";
 import Portfolio from "./components/Portfolio/Portfolio";
 import Project from "./components/Project/Project";
 import Experience from "./components/Experience/Experience";
+import NotFound from "./components/NotFound/NotFound";
 import "./index.css";
 import "./globals.scss"; // Import global styles here
 // import { MusicProvider } from "../src/context/MusicContext.jsx";
-
-export function ErrorPage() {
-  return (
-    <div className="container" style={{ padding: "4rem 2rem" }}>
-      <h1>404 — Page not found</h1>
-      <p>
-        The page you requested doesn&apos;t exist. Check the URL or go back
-        home.
-      </p>
-    </div>
-  );
-}
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
-    errorElement: <ErrorPage />,
+    errorElement: <NotFound />,
     children: [
       { index: true, element: <Home /> },
       { path: "about", element: <About /> },
