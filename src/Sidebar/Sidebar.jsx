@@ -8,8 +8,9 @@ import {
   faBars,
   faClose,
   faEnvelope,
-  faGear,
+  faDiagramProject,
   faHome,
+  faCode,
   faSuitcase,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
@@ -23,29 +24,6 @@ import { useState } from "react";
 
 const Sidebar = () => {
   const [showNav, setShowNav] = useState(false);
-
-  // useEffect(() => {
-  //   const tl = gsap.timeline();
-
-  //   if (showNav) {
-  //     tl.to(".nav-bar nav", {
-  //       opacity: 1,
-  //       y: 0,
-  //       pointerEvents: "auto",
-  //       duration: 0.5,
-  //       ease: "power3.inOut",
-  //     });
-  //   } else {
-  //     tl.to(".nav-bar nav", {
-  //       opacity: 0,
-  //       y: -50,
-  //       pointerEvents: "none",
-  //       duration: 0.5,
-  //       ease: "power3.inOut",
-  //     });
-  //   }
-  // }, [showNav]);
-
   return (
     <div className="nav-bar">
       <Link className="logo" to="/">
@@ -86,11 +64,20 @@ const Sidebar = () => {
         <NavLink
           exact="true"
           activeclassname="active"
+          to="/experience"
+          className="experience-link"
+          onClick={() => setShowNav(false)}
+        >
+          <FontAwesomeIcon icon={faSuitcase} color="#4d4d4e" />
+        </NavLink>
+        <NavLink
+          exact="true"
+          activeclassname="active"
           to="/portfolio"
           className="portfolio-link"
           onClick={() => setShowNav(false)}
         >
-          <FontAwesomeIcon icon={faGear} color="#4d4d4e" />
+          <FontAwesomeIcon icon={faCode} color="#4d4d4e" />
         </NavLink>
         <NavLink
           exact="true"
@@ -99,7 +86,7 @@ const Sidebar = () => {
           className="project-link"
           onClick={() => setShowNav(false)}
         >
-          <FontAwesomeIcon icon={faSuitcase} color="#4d4d4e" />
+          <FontAwesomeIcon icon={faDiagramProject} color="#4d4d4e" />
         </NavLink>
         <NavLink
           exact="true"
