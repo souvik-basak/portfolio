@@ -1,50 +1,55 @@
-.music-toggle-container {
+.soundwave-container {
   position: fixed;
-  top: 10px;
+  top: 30px;
   right: 60px;
   z-index: 9;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
+  cursor: pointer;
   opacity: 0.9;
 
-  @media (max-width: 1200px) {
-    top: 20px;
+  @media (max-width: 1024px) {
+    top: 25px;
   }
-}
 
+  @media (max-width: 600px) {
+    top: 25px;
+  }
 
-.music-toggle {
-  width: 30px;
-  height: 15px;
-  border-radius: 20px;
-  background: #333;
-  display: flex;
-  align-items: center;
-  padding: 3px;
-  cursor: pointer;
-  position: relative;
-}
+  .soundwave-bars {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 3px;
 
-.toggle-circle {
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  background: #ffd700;
-  position: absolute;
-  left: 3px;
-  transition: all 0.3s ease;
-}
+    .bar {
+      width: 3px;
+      height: 16px;
+      background: #334f66;
+      border-radius: 2px;
+      transition: background 0.3s ease, transform 0.2s ease;
+      transform-origin: center center;
 
-.volume-slider {
-  height: 4px;
-  accent-color: #ffd700;
-  transition: all 0.3s ease;
-}
+      @media (max-width: 600px) {
+        height: 12px;
+      }
+    }
 
-.sound-label{
-  font-size: 1.3rem;
-  color: #fff;
-  letter-spacing: normal;
-  font-family: monospace;
+    .bar.active {
+      background: #ffd700;
+    }
+
+    .bar.paused {
+      background: #777; // slightly dim to show paused
+      transition: background 0.5s ease;
+    }
+  }
+
+  .sound-label {
+    font-size: 1.2rem;
+    color: #fff;
+    font-family: monospace;
+    opacity: 0.8;
+  }
 }

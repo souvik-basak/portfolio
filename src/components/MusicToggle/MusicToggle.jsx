@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import "./MusicToggle.scss";
 
@@ -15,38 +15,32 @@ function MusicToggle() {
 
   const [showToggle, setShowToggle] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const barRefs = useRef([]);
 
+  // Scroll hide/show
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      if (currentScrollY > lastScrollY && currentScrollY > 50) {
-        setShowToggle(false);
-      } else {
-        setShowToggle(true);
-      }
+      setShowToggle(!(currentScrollY > lastScrollY && currentScrollY > 50));
       setLastScrollY(currentScrollY);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
+  // Audio control
   useEffect(() => {
     const audio = document.getElementById("background-music");
     if (!audio) return;
-
     audio.volume = volume;
 
     const tryPlay = async () => {
       audio.muted = false;
       try {
-        if (isPlaying) {
-          await audio.play();
-        } else {
-          audio.pause();
-        }
+        if (isPlaying) await audio.play();
+        else audio.pause();
       } catch (err) {
-        console.error("Autoplay blocked:", err);
+        console.warn("Autoplay blocked:", err);
       }
     };
 
@@ -56,87 +50,61 @@ function MusicToggle() {
       tryPlay();
       window.removeEventListener("click", handleUserInteraction);
     };
-
     window.addEventListener("click", handleUserInteraction);
 
     return () => window.removeEventListener("click", handleUserInteraction);
   }, [isPlaying, volume]);
 
-  useEffect(() => {
-    if (!isPlaying) return;
-
-    const playAudio = () => {
-      const audio = document.getElementById("background-music");
-      if (audio) {
-        audio.play().catch(() => {
-          console.log("Playback prevented. User gesture needed.");
-        });
-      }
-    };
-
-    window.addEventListener("click", playAudio, { once: true });
-
-    return () => {
-      window.removeEventListener("click", playAudio);
-    };
-  }, [isPlaying]);
-  
-
+  // Save state
   useEffect(() => {
     localStorage.setItem("isPlaying", isPlaying);
     localStorage.setItem("volume", volume);
   }, [isPlaying, volume]);
 
+  // Random pulse (paused state freeze)
+  useEffect(() => {
+    if (!isPlaying) return;
+    const interval = setInterval(() => {
+      barRefs.current.forEach((bar) => {
+        if (bar) {
+          const randomScale = (Math.random() * 1.8 + 0.8).toFixed(2); // more bounce
+          bar.style.transform = `scaleY(${randomScale})`;
+        }
+      });
+    }, 150);
+
+    return () => clearInterval(interval);
+  }, [isPlaying]);
+
   return (
-    <>
-      <motion.div
-        className="music-toggle-container"
-        animate={{ y: showToggle ? 0 : -100 }}
-        transition={{ type: "tween", duration: 0.8 }}
-      >
-        <div
-          className="music-toggle"
-          onClick={() => setIsPlaying((prev) => !prev)}
+    <motion.div
+      className="soundwave-container"
+      animate={{ y: showToggle ? 0 : -100 }}
+      transition={{ type: "tween", duration: 0.8 }}
+      onClick={() => setIsPlaying((prev) => !prev)}
+    >
+      <div className="soundwave-bars">
+        {[...Array(5)].map((_, i) => (
+          <span
+            key={i}
+            ref={(el) => (barRefs.current[i] = el)}
+            className={`bar ${isPlaying ? "active" : "paused"}`}
+          ></span>
+        ))}
+      </div>
+
+      {/* <AnimatePresence>
+        <motion.div
+          className="sound-label"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ type: "spring", damping: 25 }}
         >
-          <motion.div
-            className="toggle-circle"
-            animate={{ x: isPlaying ? 15 : 0 }}
-            transition={{ type: "spring", stiffness: 300, damping: 10 }}
-            style={{ background: isPlaying ? "#ffd700" : "#334f66" }}
-          />
-        </div>
-
-        <AnimatePresence>
-          <motion.div
-            className="sound-label"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ type: "spring", damping: 25 }}
-          >
-            SOUND {isPlaying ? "[ON]" : "[OFF]"}
-          </motion.div>
-        </AnimatePresence>
-
-        {/* <AnimatePresence>
-          {isPlaying && (
-            <motion.input
-              type="range"
-              min="0"
-              max="0.5"
-              step="0.01"
-              value={volume}
-              onChange={(e) => setVolume(parseFloat(e.target.value))}
-              className="volume-slider"
-              initial={{ opacity: 0, width: 0 }}
-              animate={{ opacity: 1, width: "100px" }}
-              exit={{ opacity: 0, width: 0 }}
-              transition={{ type: "spring", damping: 30 }}
-            />
-          )}
-        </AnimatePresence> */}
-      </motion.div>
-    </>
+          SOUND {isPlaying ? "[ON]" : "[PAUSED]"}
+        </motion.div>
+      </AnimatePresence> */}
+    </motion.div>
   );
 }
 

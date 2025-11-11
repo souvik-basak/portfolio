@@ -8,6 +8,37 @@
   cursor: default;
   box-sizing: border-box;
 
+  /* Custom scrollbar (WebKit browsers) and Firefox fallback */
+  &::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+    margin: 6px 0;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #ffd700, #ff8c00);
+    border-radius: 8px;
+    border: 3px solid transparent; /* creates padding between thumb and track */
+    background-clip: content-box;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    filter: brightness(0.95);
+  }
+
+  &::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+
+  /* Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: #ffd700 rgba(255, 255, 255, 0.03);
+
   @media screen and (max-width: 1024px) {
     padding-left: 0;
   }
