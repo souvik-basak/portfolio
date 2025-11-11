@@ -94,6 +94,7 @@ const Portfolio = () => {
   const [showAlert, setShowAlert] = useState(true);
   const [letterClass, setLetterClass] = useState("text-animate");
   const containerRef = useRef(null);
+  const [draggingIndex, setDraggingIndex] = useState(null);
   const [dragConstraints, setDragConstraints] = useState({
     left: 0,
     top: 0,
@@ -131,7 +132,8 @@ const Portfolio = () => {
     audioRef.current.preload = "auto";
   }, []);
 
-  const handleDragStart = () => {
+  const handleDragStart = (index) => {
+    setDraggingIndex(index);
     if (audioRef.current) {
       audioRef.current.currentTime = 0;
       audioRef.current.play().catch(() => {});
@@ -139,6 +141,7 @@ const Portfolio = () => {
   };
 
   const handleDragEnd = () => {
+    setDraggingIndex(null);
     if (audioRef.current) {
       audioRef.current.pause();
       audioRef.current.currentTime = 0;
@@ -204,10 +207,10 @@ const Portfolio = () => {
             {skills.map((skill, index) => (
               <motion.div
                 key={index}
-                className="skill-item"
+                className={`skill-item ${draggingIndex === index ? 'dragging' : ''}`}
                 variants={skillVariants}
                 drag
-                onDragStart={handleDragStart}
+                onDragStart={() => handleDragStart(index)}
                 onDragEnd={handleDragEnd}
                 dragConstraints={dragConstraints}
                 dragElastic={1}

@@ -73,8 +73,8 @@ const Sidebar = () => {
         <NavLink
           exact="true"
           activeclassname="active"
-          to="/portfolio"
-          className="portfolio-link"
+          className="skills-link"
+          to="/skills"
           onClick={() => setShowNav(false)}
         >
           <FontAwesomeIcon icon={faCode} color="#4d4d4e" />

@@ -34,6 +34,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    z-index: 1;
+    will-change: transform;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    touch-action: none;
     font-size: 6rem; // icon size
     color: #ffd700;
     cursor: grab;
@@ -47,6 +56,12 @@
     }
 
     &:active {
+      cursor: grabbing;
+    }
+
+    &.dragging {
+      z-index: 9999;
+      // stronger visual emphasis while dragging
       cursor: grabbing;
     }
 
@@ -103,6 +118,18 @@
     top: 45%;
     font-size: 15px;
   }
+
+/* Mobile-specific performance hints */
+@media screen and (max-width: 768px) {
+  .skills-container .skill-item {
+    /* reduce transition work on mobile and hint the browser to use the GPU */
+    transition: transform 0.18s ease, color 0.18s ease, box-shadow 0.18s ease;
+    will-change: transform;
+    touch-action: none;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+}
 
   .container.portfolio-page .skills-container {
     width: 65%;
