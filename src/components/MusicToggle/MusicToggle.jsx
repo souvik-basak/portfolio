@@ -1,14 +1,12 @@
 import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import "./MusicToggle.scss";
 
 function MusicToggle() {
-  const [isPlaying, setIsPlaying] = useState(() => {
-    const storedIsPlaying = localStorage.getItem("isPlaying");
-    return storedIsPlaying === "true";
-  });
+  // Always start playing on load/reload; user can pause after.
+  const [isPlaying, setIsPlaying] = useState(true);
 
-  const [volume, setVolume] = useState(() => {
+  const [volume] = useState(() => {
     const storedVolume = localStorage.getItem("volume");
     return storedVolume ? parseFloat(storedVolume) : 0.03;
   });
@@ -57,9 +55,8 @@ function MusicToggle() {
 
   // Save state
   useEffect(() => {
-    localStorage.setItem("isPlaying", isPlaying);
     localStorage.setItem("volume", volume);
-  }, [isPlaying, volume]);
+  }, [volume]);
 
   // Random pulse (paused state freeze)
   useEffect(() => {

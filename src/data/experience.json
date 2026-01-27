@@ -1,7 +1,7 @@
 [
   {
-    "title": "Frontend Developer Intern - DNA/Zummit Infolabs",
+    "title": "Software Developer Intern - DNA/Zummit Infolabs",
     "period": "Mar 2025 – Present",
-    "body": "I’m currently contributing to frontend development at DNA/Zummit Infolabs, where I build and optimize modern web applications using React.js, Next.js, and TailwindCSS. One of my proudest contributions was optimizing a Photographer Portfolio website, improving load time by 700ms and creating a smoother, more engaging visual experience. I also helped build a scalable HRMS portal, implementing over 10+ frontend components, integrating APIs, and writing unit tests that enhanced code quality and performance."
+    "body": "Developed and maintained production-grade full-stack web applications using Next.js / React, Node.js, and Tailwind CSS, supporting both customer-facing platforms and internal enterprise applications. Contributed to design discussions around API structure, database modelling, state management, and performance tradeoffs across frontend and backend systems.\n\nDesigned, implemented, and integrated 15+ RESTful API endpoints, collaborating on API contracts, data models, and cross-module integrations to reduce data-fetch latency by 25% and improve overall system reliability. Designed and queried relational databases using SQL via Prisma.\n\nEngineered 30+ reusable, standards-compliant UI components and applied performance optimizations including server-side rendering, CDN-based asset delivery, and lazy loading, achieving up to 700ms faster page load times while contributing to agile sprints, testing, and technical documentation."
   }
 ]

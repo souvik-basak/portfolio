@@ -1,4 +1,3 @@
-
 import "./Portfolio.scss";
 import AnimatedLetters from "../Animation/Animation";
 import dragSoundSrc from "../../assets/music/dragSound.mp3";
@@ -13,6 +12,11 @@ import {
   FaGithub,
   FaSass,
   FaSlack,
+  FaPython,
+  FaDatabase,
+  FaCodeBranch,
+  FaUniversalAccess,
+  FaPalette,
 } from "react-icons/fa";
 import { VscVscode } from "react-icons/vsc";
 import {
@@ -29,50 +33,62 @@ import {
   SiFigma,
   SiVite,
   SiVercel,
-  SiEslint,
   SiPostgresql,
   SiPrisma,
   SiSocketdotio,
   SiJsonwebtokens,
   SiPostman,
+  SiCplusplus,
+  SiDocker,
+  SiGithubactions,
+  SiCypress,
+  // SiPlaywright,
+  SiTestinglibrary,
 } from "react-icons/si";
-
-
+import { DiRedis } from "react-icons/di";
+import { FaAws } from "react-icons/fa";
 
 const skills = [
-  { icon: <FaHtml5 color="#E34F26" />, name: "HTML" },
-  { icon: <FaCss3Alt color="#1572B6" />, name: "CSS" },
-  { icon: <SiJavascript color="#F7DF1E" />, name: "JavaScript" },
+  { icon: <FaHtml5 color="#E34F26" />, name: "HTML5" },
+  { icon: <FaCss3Alt color="#1572B6" />, name: "CSS3" },
+  { icon: <SiJavascript color="#F7DF1E" />, name: "JavaScript (ES6+)" },
   { icon: <SiTypescript color="#3178C6" />, name: "TypeScript" },
+  { icon: <SiCplusplus color="#00599C" />, name: "C/C++" },
+  { icon: <FaPython color="#3776AB" />, name: "Python" },
   { icon: <FaReact color="#61DAFB" />, name: "React" },
-  { icon: <SiRedux color="#764ABC" />, name: "Redux" },
-  { icon: <SiTailwindcss color="#06B6D4" />, name: "Tailwind" },
-  { icon: <FaSass color="#CC6699" />, name: "Sass" },
-  { icon: <SiVite color="#646CFF" />, name: "Vite" },
-  { icon: <SiVitest color="#729B1B" />, name: "Vitest" },
-  { icon: <SiEslint color="#4B32C3" />, name: "ESLint" },
-  { icon: <SiFigma color="#F24E1E" />, name: "Figma" },
   { icon: <SiNextdotjs color="#000000" />, name: "Next.js" },
-  { icon: <VscVscode color="#007ACC" />, name: "VS Code" },
-  { icon: <SiVercel color="#000000" />, name: "Vercel" },
-  { icon: <FaSlack color="#4A154B" />, name: "Slack" },
-  // { icon: <SiFramermotion color="#0055FF" />, name: "Framer Motion" },
-
-  // Backend
   { icon: <FaNodeJs color="#339933" />, name: "Node.js" },
   { icon: <SiExpress color="#000000" />, name: "Express.js" },
+  { icon: <SiTailwindcss color="#06B6D4" />, name: "TailwindCSS" },
+  { icon: <FaSass color="#CC6699" />, name: "SCSS" },
+  { icon: <SiPrisma color="#2D3748" />, name: "Prisma" },
+  { icon: <SiSocketdotio color="#010101" />, name: "Socket.io" },
+  { icon: <SiRedux color="#764ABC" />, name: "Redux" },
+  { icon: <FaPalette color="#c084fc" />, name: "shadcn/ui" },
   { icon: <SiMongodb color="#47A248" />, name: "MongoDB" },
   { icon: <SiPostgresql color="#4169E1" />, name: "PostgreSQL" },
-  { icon: <SiPrisma color="#2D3748" />, name: "Prisma" },
+  { icon: <DiRedis color="#DC382D" />, name: "Redis" },
+  { icon: <FaDatabase color="#0f172a" />, name: "SQL / DBMS" },
+  { icon: <SiDocker color="#2496ED" />, name: "Docker" },
+  { icon: <FaAws color="#FF9900" />, name: "AWS (S3, Cognito)" },
+  { icon: <SiGithubactions color="#2088FF" />, name: "GitHub Actions" },
   { icon: <SiGraphql color="#E10098" />, name: "GraphQL" },
-  { icon: <SiSocketdotio color="#010101" />, name: "Socket.IO" },
-  { icon: <SiJsonwebtokens color="#000000" />, name: "JWT" },
-
-  // Tools & Version Control
-  { icon: <FaGitAlt color="#F05032" />, name: "Git" },
-  { icon: <FaGithub color="#181717" />, name: "GitHub" },
+  { icon: <SiJsonwebtokens color="#000000" />, name: "JWT Auth" },
+  { icon: <SiCypress color="#69D3A7" />, name: "Cypress" },
+  // { icon: <SiPlaywright color="#2dba4e" />, name: "Playwright" },
+  { icon: <SiTestinglibrary color="#E33332" />, name: "Testing Library" },
+  { icon: <SiVitest color="#729B1B" />, name: "Vitest" },
+  { icon: <FaCodeBranch color="#5b21b6" />, name: "Agile / Code Reviews" },
+  { icon: <FaUniversalAccess color="#2563eb" />, name: "Accessibility (WCAG)" },
+  { icon: <SiVite color="#646CFF" />, name: "Vite" },
   { icon: <SiPnpm color="#F69220" />, name: "pnpm" },
   { icon: <SiPostman color="#FF6C37" />, name: "Postman" },
+  { icon: <FaGitAlt color="#F05032" />, name: "Git" },
+  { icon: <FaGithub color="#181717" />, name: "GitHub" },
+  { icon: <SiVercel color="#000000" />, name: "Vercel" },
+  { icon: <VscVscode color="#007ACC" />, name: "VS Code" },
+  { icon: <SiFigma color="#F24E1E" />, name: "Figma" },
+  { icon: <FaSlack color="#4A154B" />, name: "Slack" },
 ];
 
 const containerVariants = {
@@ -121,9 +137,9 @@ const Portfolio = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowAlert(false);
-    }, 1000); 
+    }, 1000);
 
-    return () => clearTimeout(timer); 
+    return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
@@ -161,36 +177,42 @@ const Portfolio = () => {
           </h1>
 
           <p>
-            I am a Full-Stack Web Developer with a strong focus on Front-End
-            development. I enjoy building responsive, interactive, and
-            high-performance web applications that provide seamless user
-            experiences. My work combines modern JavaScript frameworks with
-            robust backend solutions to deliver reliable, scalable applications.
+            I am a frontend-focused full-stack developer working with
+            JavaScript/TypeScript, C/C++, Python, and modern web tooling. I
+            build responsive, accessible experiences in React and Next.js with
+            Tailwind/shadcn, backed by Node.js/Express and data layers across
+            PostgreSQL, MongoDB, Redis, and Prisma.
           </p>
 
           <p>
             <strong>Technical Skills:</strong>
-            <br />• <strong>Frontend:</strong>{" "}
+            <br />• <strong>Languages:</strong>{" "}
+            <span>JavaScript (ES6+), TypeScript, C/C++, Python, SQL</span>
+            <br />• <strong>Frontend & UI:</strong>{" "}
             <span>
-              React.js, Next.js, Redux, Tailwind CSS, TypeScript, Framer Motion
+              React.js, Next.js, TailwindCSS, shadcn/ui, Zustand/Redux, Vite
             </span>
-            <br />• <strong>Backend:</strong>{" "}
-            <span>Node.js, Express.js, MongoDB, PostgreSQL, GraphQL</span>
-            <br />• <strong>Languages & Styling:</strong>{" "}
-            <span>HTML5, CSS3, JavaScript (ES6+), SCSS</span>
-            <br />• <strong>Tools & Version Control:</strong>{" "}
-            <span>Git, GitHub, pnpm, Postman, VS Code, Figma, Vercel</span>
-            <br />• <strong>Testing:</strong>{" "}
-            <span>Vitest, Jest, React Testing Library</span>
+            <br />• <strong>Backend & Realtime:</strong>{" "}
+            <span>Node.js, Express.js, REST APIs, Socket.io, GraphQL</span>
+            <br />• <strong>Data & Infra:</strong>{" "}
+            <span>
+              PostgreSQL, MongoDB, Redis, Prisma ORM, Docker, AWS (S3/Cognito)
+            </span>
+            <br />• <strong>Testing & Quality:</strong>{" "}
+            <span>
+              Jest, React Testing Library, Cypress, Playwright, Vitest, ESLint
+            </span>
+            <br />• <strong>DevOps & Tooling:</strong>{" "}
+            <span>
+              Git, GitHub Actions (CI/CD), pnpm, Postman, Vercel, VS Code
+            </span>
           </p>
 
           <p>
-            I enjoy collaborating with teams, brainstorming creative solutions,
-            and bringing ideas to life. I am comfortable using{" "}
-            <span>Slack</span> and <span>JIRA</span> to stay organized, and I am
-            always eager to learn new technologies and tackle challenging
-            problems. My goal is to deliver high-quality, user-centric solutions
-            that make a real impact.
+            I focus on clean architecture, authentication/authorization (JWT),
+            performance optimization, accessibility (WCAG), and collaborative
+            delivery (Agile/Scrum, code reviews). I enjoy turning complex
+            requirements into scalable, user-centric products.
           </p>
         </div>
 
@@ -207,7 +229,7 @@ const Portfolio = () => {
             {skills.map((skill, index) => (
               <motion.div
                 key={index}
-                className={`skill-item ${draggingIndex === index ? 'dragging' : ''}`}
+                className={`skill-item ${draggingIndex === index ? "dragging" : ""}`}
                 variants={skillVariants}
                 drag
                 onDragStart={() => handleDragStart(index)}

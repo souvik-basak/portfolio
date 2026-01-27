@@ -10,6 +10,7 @@ import {
   faNodeJs,
   faReact,
 } from "@fortawesome/free-brands-svg-icons";
+import { FaAws } from "react-icons/fa";
 
 const About = () => {
   const [letterClass, setLetterClass] = useState("text-animate");
@@ -30,25 +31,26 @@ const About = () => {
             />
           </h1>
           <p>
-            I&apos;m a very ambitious front-end developer looking for a role in
-            an established IT company with the opportunity to work with the
-            latest technologies on challenging and diverse projects. I have a
-            strong work ethic, a passion for learning, and a desire to succeed.
-            I am always looking for ways to improve my skills and knowledge in
-            the field of web development.
+            I&apos;m a frontend-focused full-stack developer with expertise
+            across React, Next.js, TypeScript, and modern tooling. I build
+            responsive, accessible web applications with a strong emphasis on
+            performance and user experience. My work spans frontend frameworks,
+            backend systems (Node.js, Express), databases (PostgreSQL, MongoDB,
+            Redis), and cloud infrastructure (AWS, Docker).
           </p>
           <p>
-            As an enthusiastic Front-End Web Developer actively seeking new
-            opportunities, I possess a comprehensive set of technical skills and
-            a strong foundation in soft skills. I&apos;m quiet confident,
-            naturally curious, and perpetually working on improving my chops one
-            problem at a time.
+            I code in JavaScript/TypeScript, C/C++, Python, and SQL. I&apos;m
+            comfortable with authentication (JWT), REST/GraphQL APIs, real-time
+            features (Socket.io), and containerized deployments. I focus on
+            clean architecture, accessibility (WCAG), performance optimization,
+            and collaborative practices (code reviews, Agile/Scrum).
           </p>
           <p>
-            In addition to my technical skills, I have strong problem-solving
-            abilities, great attention to detail, excellent communication
-            skills, the ability to work effectively in a team, adaptability, and
-            strong time management skills.
+            I&apos;m naturally curious, detail-oriented, and driven to solve
+            complex problems. I enjoy learning new technologies, collaborating
+            across teams, and delivering user-centric solutions that scale. When
+            I&apos;m not coding, I explore new frameworks, contribute to
+            projects, and stay current with modern web standards.
           </p>
         </div>
         <div className="parallax-star">

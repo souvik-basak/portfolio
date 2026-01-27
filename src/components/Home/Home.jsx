@@ -29,11 +29,11 @@ const Home = () => {
     "r",
     ".",
   ];
-  useEffect(()=>{
-    setTimeout(()=>{
-      setLetterClass("text-animate-hover")
-    },4000)
-  },[])
+  useEffect(() => {
+    setTimeout(() => {
+      setLetterClass("text-animate-hover");
+    }, 4000);
+  }, []);
   return (
     <>
       <div className="container home-page">
@@ -59,17 +59,14 @@ const Home = () => {
               idx={22}
             />
           </h1>
-          <h2>Frontend Developer / JavaScript Expert / ReactJS Developer</h2>
+          <h2>Software Developer / Next.js / Express.js / TypeScript</h2>
           <div className="btn-set">
             <Link to="/contact">
-              <EncryptButton text="CONTACT ME"/>
+              <EncryptButton text="CONTACT ME" />
             </Link>
-            <Link
-              to="https://drive.google.com/file/d/1OrVD93uz_V_rK5s_7fpJSHbFR8kVpdnL/view?usp=sharing"
-              target="_blank"
-            >
+            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
               <EncryptButton text="VIEW RESUME" />
-            </Link>
+            </a>
           </div>
         </div>
         <Logo />

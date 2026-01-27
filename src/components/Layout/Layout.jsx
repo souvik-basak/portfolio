@@ -7,6 +7,7 @@ import FirstTimeLoader from "../FirstTimeLoader/FirstTimeLoader";
 import { motion } from "framer-motion";
 import MusicToggle from "../MusicToggle/MusicToggle";
 import TimeLocation from "../TimeLocation/TimeLocation";
+import { applyPageMetadata } from "../../seo";
 import "./Layout.scss";
 
 function Layout() {
@@ -46,6 +47,54 @@ function Layout() {
       return () => clearTimeout(routeTimer);
     }
   }, [location, showFirstTimeLoader]);
+
+  // Update document metadata per route for basic SPA SEO
+  useEffect(() => {
+    applyPageMetadata(location.pathname);
+  }, [location.pathname]);
+
+  // Tab visibility listener - change title when user switches tabs
+  useEffect(() => {
+    const originalTitle = document.title;
+    const attentionMessages = [
+      "👋 Come back!",
+      "🚀 You're missing out...",
+      "✨ Still here...",
+      "💡 New ideas waiting...",
+      "🎯 Come back to me!",
+      "🔥 Check this out!",
+      "💻 More to explore!",
+      "🌟 Don't go!",
+      "⚡ Back to work!",
+      "🎨 See my projects!",
+      "📱 Mobile ready!",
+      "🛠️ Built with passion!",
+      "🚀 Fast & furious!",
+      "💪 Powered by React!",
+      "🎯 Your next hire!",
+      "✨ Full-stack magic!",
+      "🔮 Interactive vibes!",
+      "🎪 Come enjoy!",
+      "🌈 Rainbow code!",
+      "⭐ Star me!",
+    ];
+
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        const randomMessage = attentionMessages[
+          Math.floor(Math.random() * attentionMessages.length)
+        ];
+        document.title = randomMessage;
+      } else {
+        document.title = originalTitle;
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
+  }, []);
 
   return (
     <div className="App">
@@ -104,7 +153,6 @@ function Layout() {
                 <TimeLocation />
               </motion.div>
             )}
-            
           </div>
         </>
       )}

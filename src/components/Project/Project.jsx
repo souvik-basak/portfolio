@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import { gsap } from "gsap";
 import { motion, useViewportScroll, useTransform } from "framer-motion";
 import "./Project.scss";
@@ -29,6 +30,7 @@ import {
   SiResend,
   SiPrisma,
 } from "react-icons/si";
+import { DiRedis } from "react-icons/di";
 
 import diceGameImg from "../../data/project-img/dice-game.png";
 import currencyConverterImg from "../../data/project-img/currency-converter.jpg";
@@ -37,6 +39,7 @@ import ChatterBoxImg from "../../data/project-img/chatterbox.png";
 import bubbleGameImg from "../../data/project-img/bubble-game.png";
 import byteLabImg from "../../data/project-img/byte-lab.png";
 import wealthyImg from "../../data/project-img/get-wealthy.png";
+import disapprImg from "../../data/project-img/disappr.png";
 
 const techIcons = {
   HTML: <FaHtml5 color="#E34F26" />,
@@ -60,9 +63,20 @@ const techIcons = {
   Prisma: <SiPrisma color="#2D3748" />,
   Resend: <SiResend color="#2563EB" />,
   Gemini: <SiGooglegemini color="#3986FC" />,
+  Redis: <DiRedis color="#DC382D" />,
 };
 
 const projects = [
+  {
+    id: 7,
+    name: "Disappr",
+    description:
+      "Disappr is a privacy-first chat app with end-to-end encryption and auto-destructing conversations.",
+    image: disapprImg,
+    tech: ["Nextjs", "TypeScript", "TailwindCSS", "NodeJs", "Redis"],
+    url: "https://disappr.vercel.app/",
+    github: "https://github.com/souvik-basak/disappr",
+  },
   {
     id: 6,
     name: "Get Wealthy",
@@ -189,7 +203,19 @@ const ProjectItem = ({ project, index }) => {
       </div>
     </motion.div>
   );
+};
 
+ProjectItem.propTypes = {
+  project: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    tech: PropTypes.arrayOf(PropTypes.string).isRequired,
+    url: PropTypes.string.isRequired,
+    github: PropTypes.string.isRequired,
+  }).isRequired,
+  index: PropTypes.number.isRequired,
 };
 
 const Project = () => {
@@ -206,7 +232,7 @@ const Project = () => {
     gsap.fromTo(
       ".project-item",
       { opacity: 0, y: 50 },
-      { opacity: 1, y: 0, duration: 1, stagger: 0.2 }
+      { opacity: 1, y: 0, duration: 1, stagger: 0.2 },
     );
   }, []);
 
