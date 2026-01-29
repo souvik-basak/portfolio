@@ -105,6 +105,18 @@
       color: #ffd700;
     }
 
+    a.active:hover {
+      color: #ffd700;
+
+      svg {
+        opacity: 1;
+      }
+
+      &:after {
+        opacity: 0;
+      }
+    }
+
     .mobile-socials {
       display: none;
     }
