@@ -47,7 +47,10 @@
     color: #ffd700;
     cursor: grab;
     // transition: transform 0.3s ease;
-    transition: transform 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+    transition:
+      transform 0.3s ease,
+      color 0.3s ease,
+      box-shadow 0.3s ease;
     transform-origin: center;
 
     &:hover {
@@ -121,13 +124,31 @@
 
   /* Mobile-specific performance hints */
   @media screen and (max-width: 768px) {
-    .skills-container .skill-item {
-      /* reduce transition work on mobile and hint the browser to use the GPU */
-      transition: transform 0.18s ease, color 0.18s ease, box-shadow 0.18s ease;
+    .skill-item {
       will-change: transform;
       touch-action: none;
       -webkit-backface-visibility: hidden;
       backface-visibility: hidden;
+      -webkit-transition:
+        transform 0.18s ease,
+        color 0.18s ease,
+        box-shadow 0.18s ease;
+      -moz-transition:
+        transform 0.18s ease,
+        color 0.18s ease,
+        box-shadow 0.18s ease;
+      -ms-transition:
+        transform 0.18s ease,
+        color 0.18s ease,
+        box-shadow 0.18s ease;
+      -o-transition:
+        transform 0.18s ease,
+        color 0.18s ease,
+        box-shadow 0.18s ease;
+      transition:
+        transform 0.18s ease,
+        color 0.18s ease,
+        box-shadow 0.18s ease;
     }
   }
 
@@ -138,8 +159,8 @@
     top: 52%;
   }
 
-  .skill-item {
-    font-size: 2.5rem; // smaller icons
+  .container.portfolio-page .skills-container .skill-item {
+    font-size: 2.1rem; // smaller icons
   }
 }
 
@@ -158,8 +179,8 @@
     transform: translateX(-50%);
   }
 
-  .skill-item {
-    font-size: 2rem;
+  .container.portfolio-page .skills-container .skill-item {
+    font-size: 5rem;
   }
 }
 
@@ -179,8 +200,8 @@
     gap: 15px;
   }
 
-  .skill-item {
-    font-size: 1.6rem;
+  .container.portfolio-page .skills-container .skill-item {
+    font-size: 5rem;
   }
 }
 
@@ -200,7 +221,7 @@
     gap: 12px;
   }
 
-  .skill-item {
+  .container.portfolio-page .skills-container .skill-item {
     font-size: 1rem;
   }
 }
