@@ -59,7 +59,7 @@ const Home = () => {
               idx={22}
             />
           </h1>
-          <h2>Software Developer  / React • Node.js • TypeScript</h2>
+          <h2>Software Developer | React • Node.js • TypeScript</h2>
           <div className="btn-set">
             <Link to="/contact">
               <EncryptButton text="CONTACT ME" />

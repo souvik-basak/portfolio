@@ -3,40 +3,40 @@
 const SITE_URL = "https://souvik-basak.vercel.app";
 
 export const DEFAULT_SEO = {
-  title: "Souvik Basak • Frontend Developer",
+  title: "Souvik Basak • Software Developer",
   description:
-    "Frontend developer crafting performant, accessible web apps with React, TypeScript, and modern tooling.",
+    "FullStack software developer specializing in frontend and backend engineering with React, TypeScript, Node.js, PostgreSQL, and scalable APIs.",
 };
 
 export const ROUTE_SEO = {
   "/": {
     title: "Home • Souvik Basak",
     description:
-      "Welcome to the portfolio of Souvik Basak — explore featured projects, experience, and contact details.",
+      "Welcome to the portfolio of Souvik Basak — FullStack software developer specializing in frontend and backend development. Explore featured projects, experience, and contact details.",
   },
   "/about": {
     title: "About • Souvik Basak",
     description:
-      "Frontend-focused full-stack developer skilled in React, Next.js, TypeScript, Node.js, PostgreSQL, MongoDB, Docker, AWS, and modern web tooling. Focus on accessibility, performance, and clean architecture.",
+      "FullStack software developer with expertise in frontend (React, Next.js, TypeScript) and backend (Node.js, Express, PostgreSQL, MongoDB). Skilled in Docker, AWS, Redis, Prisma, GraphQL, REST APIs, and modern web architecture.",
   },
   "/contact": {
     title: "Contact • Souvik Basak",
     description:
-      "Get in touch with Souvik Basak for collaborations or opportunities.",
+      "Get in touch with Souvik Basak, FullStack software developer, for collaborations or opportunities.",
   },
   "/skills": {
     title: "Skills • Souvik Basak",
     description:
-      "Skills across React/Next.js, TypeScript, Node/Express, PostgreSQL, MongoDB, Redis, Prisma, Docker, AWS (S3/Cognito), Socket.io, testing (Jest/Cypress/Playwright), CI/CD (GitHub Actions), and accessibility.",
+      "FullStack software development skills: Frontend (React/Next.js, TypeScript, TailwindCSS), Backend (Node.js/Express, PostgreSQL, MongoDB, Redis, Prisma, GraphQL), DevOps (Docker, AWS S3/Cognito), Testing (Jest/Cypress/Vitest), and CI/CD (GitHub Actions).",
   },
   "/project": {
     title: "Projects • Souvik Basak",
     description:
-      "Selected projects showcasing React, Next.js, and full-stack work.",
+      "Selected FullStack projects showcasing React, Next.js, Node.js, Express, and end-to-end development work.",
   },
   "/experience": {
     title: "Experience • Souvik Basak",
-    description: "Professional experience, roles, and accomplishments.",
+    description: "Professional experience as a FullStack software developer with roles spanning frontend and backend development.",
   },
 };
 
