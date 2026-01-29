@@ -1,0 +1,381 @@
+.spotlight-trigger {
+  position: fixed;
+  top: 20px;
+  right: 50%;
+  transform: translateX(50%);
+  z-index: 100;
+
+  .spotlight-button {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 16px;
+    background: rgba(255, 215, 0, 0.05);
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    border-radius: 8px;
+    color: #8d8d8d;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+
+    &:hover {
+      background: rgba(255, 215, 0, 0.1);
+      border-color: rgba(255, 215, 0, 0.4);
+      color: #ffd700;
+    }
+
+    svg {
+      font-size: 14px;
+    }
+
+    .search-text {
+      display: none;
+
+      @media screen and (min-width: 768px) {
+        display: inline;
+      }
+    }
+
+    .keyboard-hint {
+      display: flex;
+      gap: 4px;
+      margin-left: auto;
+
+      kbd {
+        padding: 2px 6px;
+        background: rgba(255, 215, 0, 0.1);
+        border: 1px solid rgba(255, 215, 0, 0.3);
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: 500;
+        color: #ffd700;
+      }
+
+      @media screen and (max-width: 768px) {
+        display: none;
+      }
+    }
+  }
+}
+
+// Spotlight Overlay & Modal
+.spotlight-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 20vh;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease;
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+.spotlight-modal {
+  width: 90%;
+  max-width: 600px;
+  background: #1a1a1a;
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+  overflow: hidden;
+  animation: slideDown 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  @keyframes slideDown {
+    from {
+      transform: translateY(-20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  // Input Container
+  .spotlight-input-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+
+    .search-icon {
+      color: #ffd700;
+      font-size: 18px;
+    }
+
+    .spotlight-input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #fff;
+      font-size: 16px;
+      font-family: inherit;
+
+      &::placeholder {
+        color: #666;
+      }
+    }
+  }
+
+  // Results
+  .spotlight-results {
+    max-height: 400px;
+    overflow-y: auto;
+
+    .results-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      .result-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 20px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        border-bottom: 1px solid rgba(255, 215, 0, 0.05);
+
+        &:hover,
+        &.selected {
+          background: rgba(255, 215, 0, 0.08);
+          border-left: 3px solid #ffd700;
+          padding-left: 17px;
+        }
+
+        .result-content {
+          flex: 1;
+
+          .result-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+          }
+
+          .result-type {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            font-weight: 600;
+
+            &.action {
+              color: #a78bfa;
+              border: 1px solid rgba(167, 139, 250, 0.35);
+              background: rgba(167, 139, 250, 0.1);
+            }
+
+            &.page {
+              color: #8ad7ff;
+              border: 1px solid rgba(138, 215, 255, 0.35);
+              background: rgba(138, 215, 255, 0.1);
+              padding: 1px 6px;
+              font-size: 9px;
+              letter-spacing: 0.4px;
+            }
+
+            &.project {
+              color: #ffd700;
+              border: 1px solid rgba(255, 215, 0, 0.35);
+              background: rgba(255, 215, 0, 0.1);
+            }
+
+            &.skill {
+              color: #4ade80;
+              border: 1px solid rgba(74, 222, 128, 0.35);
+              background: rgba(74, 222, 128, 0.1);
+            }
+          }
+
+          .result-name {
+            margin: 0;
+            color: #ffd700;
+            font-size: 14px;
+            font-weight: 600;
+
+            mark.highlight {
+              background: rgba(255, 215, 0, 0.3);
+              color: #fff;
+              padding: 1px 2px;
+              border-radius: 2px;
+            }
+          }
+
+          .result-description {
+            margin: 4px 0;
+            color: #999;
+            font-size: 12px;
+
+            mark.highlight {
+              background: rgba(255, 215, 0, 0.25);
+              color: #ffd700;
+              padding: 1px 2px;
+              border-radius: 2px;
+              font-weight: 600;
+            }
+          }
+
+          .result-snippet {
+            margin: 4px 0 0;
+            color: #c9c9c9;
+            font-size: 12px;
+            line-height: 1.4;
+            opacity: 0.9;
+
+            mark.highlight {
+              background: rgba(255, 215, 0, 0.25);
+              color: #ffd700;
+              padding: 1px 2px;
+              border-radius: 2px;
+              font-weight: 600;
+            }
+          }
+
+          .result-tech {
+            display: flex;
+            gap: 6px;
+            margin-top: 6px;
+            flex-wrap: wrap;
+
+            .tech-badge {
+              display: inline-block;
+              padding: 2px 8px;
+              background: rgba(255, 215, 0, 0.1);
+              border: 1px solid rgba(255, 215, 0, 0.2);
+              border-radius: 4px;
+              color: #ffd700;
+              font-size: 10px;
+              text-transform: uppercase;
+              letter-spacing: 0.5px;
+            }
+          }
+        }
+
+        .result-icon {
+          color: #ffd700;
+          font-size: 12px;
+          opacity: 0;
+          transition: opacity 0.2s ease;
+        }
+
+        &:hover .result-icon,
+        &.selected .result-icon {
+          opacity: 1;
+        }
+      }
+    }
+
+    .no-results {
+      padding: 40px 20px;
+      text-align: center;
+      color: #999;
+
+      p {
+        margin: 0;
+        font-size: 14px;
+      }
+    }
+  }
+
+  // Footer
+  .spotlight-footer {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 12px 20px;
+    border-top: 1px solid rgba(255, 215, 0, 0.1);
+    background: rgba(255, 215, 0, 0.02);
+
+    .key-hint {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: #666;
+
+      kbd {
+        padding: 2px 6px;
+        background: rgba(255, 215, 0, 0.1);
+        border: 1px solid rgba(255, 215, 0, 0.2);
+        border-radius: 3px;
+        color: #ffd700;
+        font-size: 11px;
+        font-weight: 500;
+      }
+    }
+
+    @media screen and (max-width: 640px) {
+      gap: 10px;
+
+      .key-hint {
+        font-size: 11px;
+
+        kbd {
+          padding: 1px 4px;
+          font-size: 9px;
+        }
+      }
+    }
+  }
+}
+
+// Scrollbar styling
+.spotlight-results::-webkit-scrollbar {
+  width: 6px;
+}
+
+.spotlight-results::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.spotlight-results::-webkit-scrollbar-thumb {
+  background: rgba(255, 215, 0, 0.2);
+  border-radius: 3px;
+
+  &:hover {
+    background: rgba(255, 215, 0, 0.4);
+  }
+}
+
+// Mobile adjustments
+@media screen and (max-width: 640px) {
+  .spotlight-trigger {
+    top: 8%;
+    right: 10px;
+
+    .spotlight-button {
+      padding: 6px 12px;
+      font-size: 12px;
+      gap: 8px;
+    }
+  }
+
+  .spotlight-overlay {
+    padding-top: 10vh;
+  }
+
+  .spotlight-modal {
+    max-width: calc(100% - 20px);
+    border-radius: 8px;
+  }
+}

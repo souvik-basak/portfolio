@@ -7,6 +7,7 @@ import FirstTimeLoader from "../FirstTimeLoader/FirstTimeLoader";
 import { motion } from "framer-motion";
 import MusicToggle from "../MusicToggle/MusicToggle";
 import TimeLocation from "../TimeLocation/TimeLocation";
+import Spotlight from "../Spotlight/Spotlight";
 import { applyPageMetadata } from "../../seo";
 import "./Layout.scss";
 
@@ -81,9 +82,10 @@ function Layout() {
 
     const handleVisibilityChange = () => {
       if (document.hidden) {
-        const randomMessage = attentionMessages[
-          Math.floor(Math.random() * attentionMessages.length)
-        ];
+        const randomMessage =
+          attentionMessages[
+            Math.floor(Math.random() * attentionMessages.length)
+          ];
         document.title = randomMessage;
       } else {
         document.title = originalTitle;
@@ -102,6 +104,7 @@ function Layout() {
         <FirstTimeLoader />
       ) : (
         <>
+          <Spotlight />
           {loading && <Loader />}
           <div className="music-toggle-container">
             {!loading && <MusicToggle />}
