@@ -21,6 +21,7 @@ import {
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 import { useState } from "react";
+import VisitorCounter from "../components/VisitorCounter/VisitorCounter";
 
 const Sidebar = () => {
   const [showNav, setShowNav] = useState(false);
@@ -124,6 +125,9 @@ const Sidebar = () => {
             <FontAwesomeIcon icon={faInstagram} />
           </a>
         </div>
+        <div className="mobile-counter">
+          <VisitorCounter />
+        </div>
       </nav>
 
       {/* Desktop social links */}
@@ -161,6 +165,8 @@ const Sidebar = () => {
           </a>
         </li>
       </ul>
+
+      <VisitorCounter />
 
       <FontAwesomeIcon
         icon={faBars}
