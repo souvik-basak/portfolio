@@ -103,7 +103,7 @@ const Spotlight = () => {
         description: "Connect with me on LinkedIn",
         keywords: ["professional", "network", "connect"],
         action: () => {
-          window.open("https://www.linkedin.com/in/souvik-basak", "_blank");
+          window.open("https://www.linkedin.com/in/isouvikbasak", "_blank");
         },
       },
       {
@@ -113,7 +113,7 @@ const Spotlight = () => {
         description: "See my latest updates on Twitter",
         keywords: ["social", "updates", "tweets"],
         action: () => {
-          window.open("https://twitter.com/souvik_basak_", "_blank");
+          window.open("https://twitter.com/souvikbasak0", "_blank");
         },
       },
       {
