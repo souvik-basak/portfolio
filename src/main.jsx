@@ -15,10 +15,6 @@ const Portfolio = lazy(() => import("./components/Portfolio/Portfolio"));
 const Project = lazy(() => import("./components/Project/Project"));
 const Experience = lazy(() => import("./components/Experience/Experience"));
 
-const RouteLoader = () => (
-  <div style={{ visibility: "hidden" }}>Loading...</div>
-);
-
 const router = createBrowserRouter([
   {
     path: "/",
@@ -29,7 +25,7 @@ const router = createBrowserRouter([
       {
         path: "about",
         element: (
-          <Suspense fallback={<RouteLoader />}>
+          <Suspense fallback={null}>
             <About />
           </Suspense>
         ),
@@ -37,7 +33,7 @@ const router = createBrowserRouter([
       {
         path: "contact",
         element: (
-          <Suspense fallback={<RouteLoader />}>
+          <Suspense fallback={null}>
             <Contact />
           </Suspense>
         ),
@@ -45,7 +41,7 @@ const router = createBrowserRouter([
       {
         path: "skills",
         element: (
-          <Suspense fallback={<RouteLoader />}>
+          <Suspense fallback={null}>
             <Portfolio />
           </Suspense>
         ),
@@ -53,7 +49,7 @@ const router = createBrowserRouter([
       {
         path: "project",
         element: (
-          <Suspense fallback={<RouteLoader />}>
+          <Suspense fallback={null}>
             <Project />
           </Suspense>
         ),
@@ -61,7 +57,7 @@ const router = createBrowserRouter([
       {
         path: "experience",
         element: (
-          <Suspense fallback={<RouteLoader />}>
+          <Suspense fallback={null}>
             <Experience />
           </Suspense>
         ),

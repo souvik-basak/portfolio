@@ -93,12 +93,18 @@
       }
 
       .counter-text {
+        display: flex;
+        flex-direction: row;
+        gap: 4px;
+        align-items: center;
+
         .count {
-          font-size: 18px;
+          font-size: 16px;
         }
 
         .label {
           font-size: 11px;
+          text-transform: uppercase;
         }
       }
     }

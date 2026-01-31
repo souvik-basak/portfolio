@@ -95,7 +95,7 @@ const VisitorCounter = () => {
         ) : (
           <>
             <span className="count">{formatCount(count)}</span>
-            <span className="label">visitors</span>
+            <span className="label">VISITORS</span>
           </>
         )}
       </div>

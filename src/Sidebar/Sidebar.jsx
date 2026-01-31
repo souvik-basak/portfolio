@@ -25,6 +25,27 @@ import VisitorCounter from "../components/VisitorCounter/VisitorCounter";
 
 const Sidebar = () => {
   const [showNav, setShowNav] = useState(false);
+  const prefetchRoutes = {
+    about: () => import("../components/About/About"),
+    contact: () => import("../components/Contact/Contact"),
+    skills: () => import("../components/Portfolio/Portfolio"),
+    project: () => import("../components/Project/Project"),
+    experience: () => import("../components/Experience/Experience"),
+  };
+
+  const prefetch = (key) => {
+    const load = prefetchRoutes[key];
+    if (load) {
+      load();
+    }
+  };
+
+  const prefetchHandlers = (key) => ({
+    onMouseEnter: () => prefetch(key),
+    onFocus: () => prefetch(key),
+    onTouchStart: () => prefetch(key),
+    onClick: () => prefetch(key),
+  });
   return (
     <div className="nav-bar">
       <Link className="logo" to="/">
@@ -58,7 +79,11 @@ const Sidebar = () => {
           activeclassname="active"
           className="about-link"
           to="/about"
-          onClick={() => setShowNav(false)}
+          {...prefetchHandlers("about")}
+          onClick={() => {
+            prefetch("about");
+            setShowNav(false);
+          }}
         >
           <FontAwesomeIcon icon={faUser} color="#4d4d4e" />
         </NavLink>
@@ -67,7 +92,11 @@ const Sidebar = () => {
           activeclassname="active"
           to="/experience"
           className="experience-link"
-          onClick={() => setShowNav(false)}
+          {...prefetchHandlers("experience")}
+          onClick={() => {
+            prefetch("experience");
+            setShowNav(false);
+          }}
         >
           <FontAwesomeIcon icon={faSuitcase} color="#4d4d4e" />
         </NavLink>
@@ -76,7 +105,11 @@ const Sidebar = () => {
           activeclassname="active"
           className="skills-link"
           to="/skills"
-          onClick={() => setShowNav(false)}
+          {...prefetchHandlers("skills")}
+          onClick={() => {
+            prefetch("skills");
+            setShowNav(false);
+          }}
         >
           <FontAwesomeIcon icon={faCode} color="#4d4d4e" />
         </NavLink>
@@ -85,7 +118,11 @@ const Sidebar = () => {
           activeclassname="active"
           to="/project"
           className="project-link"
-          onClick={() => setShowNav(false)}
+          {...prefetchHandlers("project")}
+          onClick={() => {
+            prefetch("project");
+            setShowNav(false);
+          }}
         >
           <FontAwesomeIcon icon={faDiagramProject} color="#4d4d4e" />
         </NavLink>
@@ -94,7 +131,11 @@ const Sidebar = () => {
           activeclassname="active"
           to="/contact"
           className="contact-link"
-          onClick={() => setShowNav(false)}
+          {...prefetchHandlers("contact")}
+          onClick={() => {
+            prefetch("contact");
+            setShowNav(false);
+          }}
         >
           <FontAwesomeIcon icon={faEnvelope} color="#4d4d4e" />
         </NavLink>
