@@ -1,8 +1,8 @@
 import { Link, NavLink } from "react-router-dom";
 import "./Sidebar.scss";
 // import { gsap } from "gsap";
-import LogoS from "../assets/images/logo-s.png";
-import LogoSub from "../assets/images/logo-sub.png";
+import LogoS from "../assets/images/logo-s.avif";
+import LogoSub from "../assets/images/logo-sub.webp";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBars,

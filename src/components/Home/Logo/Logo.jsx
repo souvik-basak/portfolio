@@ -63,11 +63,9 @@
 
 // export default Logo;
 
-
-
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
-import LogoS from "../../../assets/images/logo-s.png";
+import LogoS from "../../../assets/images/logo-s.avif";
 
 import "./Logo.scss";
 
@@ -77,22 +75,33 @@ const Logo = () => {
   const solidLogoRef = useRef();
 
   useEffect(() => {
-    gsap.timeline().to(bgRef.current, {
-      duration: 2,
-      opacity: 1,
-    });
+    const requestIdle =
+      window.requestIdleCallback || ((cb) => setTimeout(cb, 0));
+    const cancelIdle = window.cancelIdleCallback || clearTimeout;
 
-    gsap.fromTo(
-      solidLogoRef.current,
-      {
-        opacity: 0,
+    const idleCallback = requestIdle(
+      () => {
+        gsap.timeline().to(bgRef.current, {
+          duration: 2,
+          opacity: 1,
+        });
+
+        gsap.fromTo(
+          solidLogoRef.current,
+          {
+            opacity: 0,
+          },
+          {
+            opacity: 1,
+            delay: 1,
+            duration: 0.5,
+          },
+        );
       },
-      {
-        opacity: 1,
-        delay: 3,
-        duration: 2,
-      }
+      { timeout: 2000 },
     );
+
+    return () => cancelIdle(idleCallback);
   }, []);
 
   // Hover effect for 3D rotation
@@ -137,6 +146,8 @@ const Logo = () => {
         ref={solidLogoRef}
         src={LogoS}
         alt="JavaScript, Developer"
+        fetchPriority="high"
+        loading="eager"
       />
 
       <svg
@@ -146,7 +157,8 @@ const Logo = () => {
         viewBox="0 0 559 897"
         xmlns="http://www.w3.org/2000/svg"
         className="svg-cont"
-        style={{ opacity: 0 }} // Initially hidden
+        style={{ opacity: 0, contentVisibility: "auto" }}
+        aria-hidden="true"
       >
         <g
           className="svg-container"

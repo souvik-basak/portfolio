@@ -1,10 +1,17 @@
 import { useEffect, useState } from "react";
 import "./VisitorCounter.scss";
-import { createClient } from "@supabase/supabase-js";
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
-const supabase = createClient(supabaseUrl, supabaseAnonKey);
+
+let supabase = null;
+const getSupabaseClient = async () => {
+  if (!supabase) {
+    const { createClient } = await import("@supabase/supabase-js");
+    supabase = createClient(supabaseUrl, supabaseAnonKey);
+  }
+  return supabase;
+};
 
 const VisitorCounter = () => {
   const [count, setCount] = useState(0);
@@ -12,54 +19,59 @@ const VisitorCounter = () => {
 
   useEffect(() => {
     let isMounted = true;
+    const requestIdle = window.requestIdleCallback || ((cb) => setTimeout(cb, 0));
+    const cancelIdle = window.cancelIdleCallback || clearTimeout;
 
-    const fetchCount = async () => {
-      try {
-        const counted = sessionStorage.getItem("visitorCounted") === "true";
+    const idleCallback = requestIdle(
+      async () => {
+        try {
+          const supabaseClient = await getSupabaseClient();
+          const counted = sessionStorage.getItem("visitorCounted") === "true";
 
-        if (counted) {
-          // Just fetch current count
-          const { data, error } = await supabase
-            .from("visitor_counter")
-            .select("count")
-            .eq("id", 1)
-            .single();
+          if (counted) {
+            // Just fetch current count
+            const { data, error } = await supabaseClient
+              .from("visitor_counter")
+              .select("count")
+              .eq("id", 1)
+              .single();
 
-          if (error) throw error;
+            if (error) throw error;
 
-          if (isMounted) {
-            setCount(Number(data?.count ?? 0));
+            if (isMounted) {
+              setCount(Number(data?.count ?? 0));
+            }
+          } else {
+            // Increment counter
+            const { data, error } = await supabaseClient.rpc(
+              "increment_visitor_counter",
+            );
+
+            if (error) throw error;
+
+            sessionStorage.setItem("visitorCounted", "true");
+
+            if (isMounted) {
+              setCount(Number(data ?? 0));
+            }
           }
-        } else {
-          // Increment counter
-          const { data, error } = await supabase.rpc(
-            "increment_visitor_counter",
-          );
-
-          if (error) throw error;
-
-          sessionStorage.setItem("visitorCounted", "true");
-
+        } catch (error) {
+          console.error("Visitor counter error:", error);
           if (isMounted) {
-            setCount(Number(data ?? 0));
+            setCount(0);
+          }
+        } finally {
+          if (isMounted) {
+            setLoading(false);
           }
         }
-      } catch (error) {
-        console.error("Visitor counter error:", error);
-        if (isMounted) {
-          setCount(0);
-        }
-      } finally {
-        if (isMounted) {
-          setLoading(false);
-        }
-      }
-    };
-
-    fetchCount();
+      },
+      { timeout: 3000 }
+    );
 
     return () => {
       isMounted = false;
+      cancelIdle(idleCallback);
     };
   }, []);
 

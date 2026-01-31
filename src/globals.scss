@@ -1,34 +1,37 @@
 $primary-color: #ffd700;
-@import 'animate.css';
 
 @font-face {
-  font-family: 'Helvetica Neue';
-  src: url('./assets/fonts/helvetica-neu.ttf') format('ttf');
+  font-family: "Helvetica Neue";
+  src: url("./assets/fonts/helvetica-neu.ttf") format("ttf");
+  font-display: swap;
 }
 @font-face {
-  font-family: 'La Belle Aurore';
-  src: url('./assets/fonts/LaBelleAurore.woff2') format('woff2');
+  font-family: "La Belle Aurore";
+  src: url("./assets/fonts/LaBelleAurore.woff2") format("woff2");
+  font-display: swap;
 }
 @font-face {
-  font-family: 'Coolvetica';
-  src: url('./assets/fonts/CoolveticaRg-Regular.woff2') format('woff2');
+  font-family: "Coolvetica";
+  src: url("./assets/fonts/CoolveticaRg-Regular.woff2") format("woff2");
+  font-display: swap;
 }
 
-input,textarea{
-  font-family: 'Helvetica Neue';
+input,
+textarea {
+  font-family: "Helvetica Neue";
 }
 
-.loader-hidden{
-  display:none;
+.loader-hidden {
+  display: none;
 }
 
-.loader-active{
-  display:block;
+.loader-active {
+  display: block;
   position: absolute;
   left: 0;
   right: 0;
   margin: auto;
-  top:0;
+  top: 0;
   bottom: 0;
   width: 70px;
   height: 70px;
@@ -36,15 +39,15 @@ input,textarea{
   animation: fadeOut 1s 1s;
   animation-fill-mode: forwards;
 }
-body{
+body {
   background: #022c43;
-  font-family: 'Helvetica Neue', sans-serif;
+  font-family: "Helvetica Neue", sans-serif;
   color: #fff;
   line-height: 1.5;
 }
-.App{
+.App {
   background: #022c43;
-  font-family: 'Helvetica Neue', sans-serif;
+  font-family: "Helvetica Neue", sans-serif;
   color: #fff;
   line-height: 1.5;
 }

@@ -3,8 +3,11 @@ import { motion } from "framer-motion";
 import "./MusicToggle.scss";
 
 function MusicToggle() {
-  // Always start playing on load/reload; user can pause after.
-  const [isPlaying, setIsPlaying] = useState(true);
+  // Start silent; play only after user clicks.
+  const [isPlaying, setIsPlaying] = useState(() => {
+    const stored = localStorage.getItem("musicEnabled");
+    return stored === "true";
+  });
 
   const [volume] = useState(() => {
     const storedVolume = localStorage.getItem("volume");
@@ -32,26 +35,26 @@ function MusicToggle() {
     if (!audio) return;
     audio.volume = volume;
 
-    const tryPlay = async () => {
-      audio.muted = false;
+    const handlePlayback = async () => {
       try {
-        if (isPlaying) await audio.play();
-        else audio.pause();
+        if (isPlaying) {
+          audio.muted = false;
+          await audio.play();
+        } else {
+          audio.pause();
+        }
       } catch (err) {
-        console.warn("Autoplay blocked:", err);
+        console.warn("Playback error:", err);
       }
     };
 
-    tryPlay();
-
-    const handleUserInteraction = () => {
-      tryPlay();
-      window.removeEventListener("click", handleUserInteraction);
-    };
-    window.addEventListener("click", handleUserInteraction);
-
-    return () => window.removeEventListener("click", handleUserInteraction);
+    handlePlayback();
   }, [isPlaying, volume]);
+
+  // Persist music state across sections
+  useEffect(() => {
+    localStorage.setItem("musicEnabled", String(isPlaying));
+  }, [isPlaying]);
 
   // Save state
   useEffect(() => {
@@ -79,6 +82,7 @@ function MusicToggle() {
       animate={{ y: showToggle ? 0 : -100 }}
       transition={{ type: "tween", duration: 0.8 }}
       onClick={() => setIsPlaying((prev) => !prev)}
+      title={isPlaying ? "Click to pause music" : "Click to play music"}
     >
       <div className="soundwave-bars">
         {[...Array(5)].map((_, i) => (
