@@ -13,6 +13,9 @@ const About = lazy(() => import("./components/About/About"));
 const Contact = lazy(() => import("./components/Contact/Contact"));
 const Portfolio = lazy(() => import("./components/Portfolio/Portfolio"));
 const Project = lazy(() => import("./components/Project/Project"));
+const ProjectDetail = lazy(
+  () => import("./components/ProjectDetail/ProjectDetail"),
+);
 const Experience = lazy(() => import("./components/Experience/Experience"));
 
 const router = createBrowserRouter([
@@ -51,6 +54,14 @@ const router = createBrowserRouter([
         element: (
           <Suspense fallback={null}>
             <Project />
+          </Suspense>
+        ),
+      },
+      {
+        path: "projects/:projectName",
+        element: (
+          <Suspense fallback={null}>
+            <ProjectDetail />
           </Suspense>
         ),
       },

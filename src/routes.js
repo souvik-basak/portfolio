@@ -6,6 +6,7 @@ export const KNOWN_PATHS = [
   "/contact",
   "/skills",
   "/project",
+  "/projects/:projectName",
   "/experience",
 ];
 
@@ -35,6 +36,11 @@ export const ROUTE_META = {
     title: "Project",
     description:
       "Individual project pages with details about technologies and goals.",
+  },
+  "/projects/:projectName": {
+    title: "Project Details",
+    description:
+      "Detailed project information including features, challenges, and learnings.",
   },
   "/experience": {
     title: "Experience",
