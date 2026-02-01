@@ -96,14 +96,14 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.2,
+      staggerChildren: 0.02,
     },
   },
 };
 
 const skillVariants = {
   hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.15 } },
 };
 const Portfolio = () => {
   const audioRef = useRef(null);
@@ -177,42 +177,47 @@ const Portfolio = () => {
           </h1>
 
           <p>
-            I am a frontend-focused full-stack developer working with
-            JavaScript/TypeScript, C/C++, Python, and modern web tooling. I
-            build responsive, accessible experiences in React and Next.js with
-            Tailwind/shadcn, backed by Node.js/Express and data layers across
-            PostgreSQL, MongoDB, Redis, and Prisma.
+            I am a frontend-focused full stack developer building fast,
+            accessible web applications. My core stack centers on React,
+            Next.js, and TypeScript, with backend systems built in Node.js and
+            Express and deployed to cloud platforms.
           </p>
 
           <p>
-            <strong>Technical Skills:</strong>
-            <br />• <strong>Languages:</strong>{" "}
+            <strong>Technical Skills</strong>
+            <br />
+            <strong>Languages:</strong>{" "}
             <span>JavaScript (ES6+), TypeScript, C/C++, Python, SQL</span>
-            <br />• <strong>Frontend & UI:</strong>{" "}
+            <br />
+            <strong>Frontend:</strong>{" "}
             <span>
-              React.js, Next.js, TailwindCSS, shadcn/ui, Zustand/Redux, Vite
+              React, Next.js, Tailwind CSS, shadcn/ui, Zustand, Redux, Vite
             </span>
-            <br />• <strong>Backend & Realtime:</strong>{" "}
-            <span>Node.js, Express.js, REST APIs, Socket.io, GraphQL</span>
-            <br />• <strong>Data & Infra:</strong>{" "}
+            <br />
+            <strong>Backend and Realtime:</strong>{" "}
+            <span>Node.js, Express, REST APIs, GraphQL, Socket.io</span>
+            <br />
+            <strong>Data and Infrastructure:</strong>{" "}
             <span>
-              PostgreSQL, MongoDB, Redis, Prisma ORM, Docker, AWS (S3/Cognito)
+              PostgreSQL, MongoDB, Redis, Prisma, Docker, AWS (S3, Cognito)
             </span>
-            <br />• <strong>Testing & Quality:</strong>{" "}
+            <br />
+            <strong>Testing and Quality:</strong>{" "}
             <span>
               Jest, React Testing Library, Cypress, Playwright, Vitest, ESLint
             </span>
-            <br />• <strong>DevOps & Tooling:</strong>{" "}
+            <br />
+            <strong>DevOps and Tooling:</strong>{" "}
             <span>
-              Git, GitHub Actions (CI/CD), pnpm, Postman, Vercel, VS Code
+              Git, GitHub Actions, CI and CD pipelines, pnpm, Postman, Vercel,
+              VS Code
             </span>
           </p>
 
           <p>
-            I focus on clean architecture, authentication/authorization (JWT),
-            performance optimization, accessibility (WCAG), and collaborative
-            delivery (Agile/Scrum, code reviews). I enjoy turning complex
-            requirements into scalable, user-centric products.
+            I prioritize clean architecture, secure authentication with JWT,
+            performance optimization, accessibility standards, and collaborative
+            delivery through code reviews and Agile workflows.
           </p>
         </div>
 

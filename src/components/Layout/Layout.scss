@@ -42,6 +42,7 @@
 .about-page,
 .contact-page,
 .portfolio-page,
+.experience-page,
 .project-page {
   .text-zone {
     width: 40%;
@@ -148,5 +149,18 @@
     width:90%;
     height:0%;
     overflow:hidden;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    &.about-page,
+    &.contact-page,
+    &.portfolio-page,
+    &.project-page {
+      .text-zone .page-title{
+        margin-left: 10px;
+      }
+    }
   }
 }

@@ -1,5 +1,9 @@
-.text-zone {
-  width: 40%;
+.portfolio-page {
+  scroll-behavior: smooth;
+}
+
+.portfolio-page .text-zone {
+  width: 45%;
   max-height: 100%;
   position: absolute;
   left: 12%;
@@ -28,6 +32,7 @@
   align-items: center;
   align-content: center;
   gap: 25px;
+  contain: layout style paint;
 
   .skill-item {
     position: relative;
@@ -43,7 +48,7 @@
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     touch-action: none;
-    font-size: 6rem; // icon size
+    font-size: 4rem; // icon size
     color: #ffd700;
     cursor: grab;
     // transition: transform 0.3s ease;
@@ -55,7 +60,11 @@
 
     &:hover {
       color: #3396cb;
-      transform: translateY(-8px) scale(1.15);
+      transform: translateY(-8px) scale(1.02);
+      -webkit-transform: translateY(-8px) scale(1.02);
+      -moz-transform: translateY(-8px) scale(1.02);
+      -ms-transform: translateY(-8px) scale(1.02);
+      -o-transform: translateY(-8px) scale(1.02);
     }
 
     &:active {
@@ -175,12 +184,12 @@
   .container.portfolio-page .skills-container {
     width: 80%;
     left: 50%;
-    top: 45%;
+    top: 40%;
     transform: translateX(-50%);
   }
 
   .container.portfolio-page .skills-container .skill-item {
-    font-size: 5rem;
+    font-size: 4rem;
   }
 }
 
@@ -195,33 +204,12 @@
   .container.portfolio-page .skills-container {
     width: 90%;
     left: 50%;
-    top: 45%;
+    top: 40%;
     transform: translateX(-50%);
     gap: 15px;
   }
 
   .container.portfolio-page .skills-container .skill-item {
-    font-size: 5rem;
-  }
-}
-
-@media screen and (max-width: 375px) {
-  .container.portfolio-page .text-zone {
-    width: 90%;
-    left: 5%;
-    top: 30%;
-    font-size: 13px;
-  }
-
-  .container.portfolio-page .skills-container {
-    width: 90%;
-    left: 50%;
-    top: 50%;
-    transform: translateX(-50%);
-    gap: 12px;
-  }
-
-  .container.portfolio-page .skills-container .skill-item {
-    font-size: 1rem;
+    font-size: 4rem;
   }
 }

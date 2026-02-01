@@ -1,8 +1,22 @@
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import "./TimeLocation.scss";
 
 function TimeLocation() {
   const [timeString, setTimeString] = useState("");
+  const [showToggle, setShowToggle] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  // Scroll hide/show
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      setShowToggle(!(currentScrollY > lastScrollY && currentScrollY > 50));
+      setLastScrollY(currentScrollY);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
 
   useEffect(() => {
     const updateTime = () => {
@@ -21,10 +35,14 @@ function TimeLocation() {
   }, []);
 
   return (
-    <div className="time-location-container">
+    <motion.div
+      className="time-location-container"
+      animate={{ y: showToggle ? 0 : -100 }}
+      transition={{ type: "tween", duration: 0.8 }}
+    >
       <span className="blink-dot" />
       <span>{timeString}</span>
-    </div>
+    </motion.div>
   );
 }
 

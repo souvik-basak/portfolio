@@ -10,7 +10,6 @@ import {
   faNodeJs,
   faReact,
 } from "@fortawesome/free-brands-svg-icons";
-import { FaAws } from "react-icons/fa";
 
 const About = () => {
   const [letterClass, setLetterClass] = useState("text-animate");
@@ -23,7 +22,7 @@ const About = () => {
     <>
       <div className="container about-page">
         <div className="text-zone">
-          <h1>
+          <h1 className="page-title">
             <AnimatedLetters
               letterClass={letterClass}
               strArray={["A", "b", "o", "u", "t", " ", "M", "e"]}
@@ -31,26 +30,25 @@ const About = () => {
             />
           </h1>
           <p>
-            I&apos;m a frontend-focused full-stack developer with expertise
-            across React, Next.js, TypeScript, and modern tooling. I build
-            responsive, accessible web applications with a strong emphasis on
-            performance and user experience. My work spans frontend frameworks,
-            backend systems (Node.js, Express), databases (PostgreSQL, MongoDB,
-            Redis), and cloud infrastructure (AWS, Docker).
+            I am a frontend-focused full stack developer who builds fast,
+            accessible web applications. I work primarily with React, Next.js,
+            TypeScript, and modern frontend tooling, with a strong focus on
+            performance and user experience.
           </p>
+
           <p>
-            I code in JavaScript/TypeScript, C/C++, Python, and SQL. I&apos;m
-            comfortable with authentication (JWT), REST/GraphQL APIs, real-time
-            features (Socket.io), and containerized deployments. I focus on
-            clean architecture, accessibility (WCAG), performance optimization,
-            and collaborative practices (code reviews, Agile/Scrum).
+            On the backend, I design and build APIs using Node.js and Express. I
+            work with PostgreSQL, MongoDB, and Redis, and deploy using Docker
+            and AWS. I have hands-on experience with authentication, REST and
+            GraphQL APIs, real-time features, and production-ready database
+            design.
           </p>
+
           <p>
-            I&apos;m naturally curious, detail-oriented, and driven to solve
-            complex problems. I enjoy learning new technologies, collaborating
-            across teams, and delivering user-centric solutions that scale. When
-            I&apos;m not coding, I explore new frameworks, contribute to
-            projects, and stay current with modern web standards.
+            I care about clean architecture, accessibility standards, and
+            maintainable code. I work well in collaborative teams, contribute
+            through code reviews, and ship features iteratively in Agile
+            environments.
           </p>
         </div>
         <div className="parallax-star">

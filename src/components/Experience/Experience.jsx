@@ -18,7 +18,7 @@ const Experience = () => {
   // Details are shown by default and there is no toggle UI per user request
 
   return (
-    <div className="container about-page">
+    <div className="container experience-page">
       <div className="text-zone">
         <h1>
           <AnimatedLetters
@@ -44,7 +44,9 @@ const Experience = () => {
               </div>
 
               <div id="exp-body" className="timeline-body">
-                <p>{experience.body}</p>
+                {experience.body.split("\n\n").map((paragraph, idx) => (
+                  <p key={idx}>{paragraph}</p>
+                ))}
               </div>
             </div>
           </article>
