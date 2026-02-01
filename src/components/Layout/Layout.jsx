@@ -18,48 +18,33 @@ function Layout() {
   }, [location.pathname]);
 
   // Tab visibility listener - change title when user switches tabs
-  useEffect(() => {
-    const originalTitle = document.title;
-    const attentionMessages = [
-      "👋 Come back!",
-      "🚀 You're missing out...",
-      "✨ Still here...",
-      "💡 New ideas waiting...",
-      "🎯 Come back to me!",
-      "🔥 Check this out!",
-      "💻 More to explore!",
-      "🌟 Don't go!",
-      "⚡ Back to work!",
-      "🎨 See my projects!",
-      "📱 Mobile ready!",
-      "🛠️ Built with passion!",
-      "🚀 Fast & furious!",
-      "💪 Powered by React!",
-      "🎯 Your next hire!",
-      "✨ Full-stack magic!",
-      "🔮 Interactive vibes!",
-      "🎪 Come enjoy!",
-      "🌈 Rainbow code!",
-      "⭐ Star me!",
-    ];
+useEffect(() => {
+  const originalTitle = document.title;
 
-    const handleVisibilityChange = () => {
-      if (document.hidden) {
-        const randomMessage =
-          attentionMessages[
-            Math.floor(Math.random() * attentionMessages.length)
-          ];
-        document.title = randomMessage;
-      } else {
-        document.title = originalTitle;
-      }
-    };
+  const attentionMessages = [
+    "Full stack developer",
+    "Building web applications",
+    "Clean and scalable code",
+    "Modern frontend and backend",
+    "View my projects"
+  ];
 
-    document.addEventListener("visibilitychange", handleVisibilityChange);
-    return () => {
-      document.removeEventListener("visibilitychange", handleVisibilityChange);
-    };
-  }, []);
+  const handleVisibilityChange = () => {
+    if (document.hidden) {
+      const randomIndex = Math.floor(Math.random() * attentionMessages.length);
+      document.title = attentionMessages[randomIndex];
+    } else {
+      document.title = originalTitle;
+    }
+  };
+
+  document.addEventListener("visibilitychange", handleVisibilityChange);
+
+  return () => {
+    document.removeEventListener("visibilitychange", handleVisibilityChange);
+    document.title = originalTitle;
+  };
+}, []);
 
   return (
     <div className="App">

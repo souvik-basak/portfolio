@@ -177,7 +177,7 @@ const Portfolio = () => {
           </h1>
 
           <p>
-            I am a frontend-focused full stack developer building fast,
+            I am a fullstack developer building fast,
             accessible web applications. My core stack centers on React,
             Next.js, and TypeScript, with backend systems built in Node.js and
             Express and deployed to cloud platforms.

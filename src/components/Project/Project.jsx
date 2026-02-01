@@ -18,7 +18,7 @@ const ProjectItem = ({ project, index }) => {
       viewport={{ once: true, amount: 0.2 }}
       transition={{
         duration: 0.1,
-        // delay: index * 0.1,
+        delay: index * 0.0001,
         ease: "easeOut",
       }}
       whileHover={{ scale: 1.08 }}

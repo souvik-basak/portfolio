@@ -164,12 +164,11 @@ const Contact = () => {
             />
           </h1>
           <p>
-            I&apos;m actively seeking exciting frontend development
-            opportunities to contribute my skills to ambitious and large-scale
-            projects. If there&apos;s an entry-level opportunity to discuss this
-            further or if you know of any openings, don&apos;t hesitate to
-            contact me using below form either.
-          </p>
+  I am a full stack developer seeking new roles and project opportunities.
+  I focus on building scalable, production ready applications.
+  If you are hiring or want to discuss a role, contact me using the form below.
+</p>
+
           <div className="contact-form">
             <form ref={refForm} onSubmit={handleSubmit}>
               <ul>

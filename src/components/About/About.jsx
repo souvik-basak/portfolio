@@ -30,7 +30,7 @@ const About = () => {
             />
           </h1>
           <p>
-            I am a frontend-focused full stack developer who builds fast,
+            I am a full stack developer who builds fast,
             accessible web applications. I work primarily with React, Next.js,
             TypeScript, and modern frontend tooling, with a strong focus on
             performance and user experience.

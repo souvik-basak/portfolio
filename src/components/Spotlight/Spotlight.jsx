@@ -152,9 +152,9 @@ const Spotlight = () => {
         title: "About",
         description: "Learn more about me",
         route: "/about",
-        keywords: ["bio", "profile", "frontend", "full-stack", "React"],
+        keywords: ["bio", "profile", "frontend", "backend", "full-stack", "React"],
         content:
-          "Frontend-focused full-stack developer. React, Next.js, TypeScript, Node.js, Express, PostgreSQL, MongoDB, Redis, AWS, Docker. JavaScript, TypeScript, C/C++, Python, SQL. JWT, REST, GraphQL, Socket.io, accessibility, performance, Agile/Scrum.",
+          "full-stack developer. React, Next.js, TypeScript, Node.js, Express, PostgreSQL, MongoDB, Redis, AWS, Docker. JavaScript, TypeScript, C/C++, Python, SQL. JWT, REST, GraphQL, Socket.io, accessibility, performance, Agile/Scrum.",
       },
       {
         id: "page-experience",
