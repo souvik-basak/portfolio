@@ -6,9 +6,9 @@ import Home from "./components/Home/Home";
 import NotFound from "./components/NotFound/NotFound";
 import "./index.css";
 import "animate.css";
-import "./globals.scss"; // Import global styles here
-// import { MusicProvider } from "../src/context/MusicContext.jsx";
+import "./globals.scss";
 
+// Lazy load all route components
 const About = lazy(() => import("./components/About/About"));
 const Contact = lazy(() => import("./components/Contact/Contact"));
 const Portfolio = lazy(() => import("./components/Portfolio/Portfolio"));
@@ -17,6 +17,9 @@ const ProjectDetail = lazy(
   () => import("./components/ProjectDetail/ProjectDetail"),
 );
 const Experience = lazy(() => import("./components/Experience/Experience"));
+
+// Suspense fallback component
+const SuspenseFallback = () => null;
 
 const router = createBrowserRouter([
   {
@@ -28,7 +31,7 @@ const router = createBrowserRouter([
       {
         path: "about",
         element: (
-          <Suspense fallback={null}>
+          <Suspense fallback={<SuspenseFallback />}>
             <About />
           </Suspense>
         ),
@@ -36,7 +39,7 @@ const router = createBrowserRouter([
       {
         path: "contact",
         element: (
-          <Suspense fallback={null}>
+          <Suspense fallback={<SuspenseFallback />}>
             <Contact />
           </Suspense>
         ),
@@ -44,7 +47,7 @@ const router = createBrowserRouter([
       {
         path: "skills",
         element: (
-          <Suspense fallback={null}>
+          <Suspense fallback={<SuspenseFallback />}>
             <Portfolio />
           </Suspense>
         ),
@@ -52,7 +55,7 @@ const router = createBrowserRouter([
       {
         path: "project",
         element: (
-          <Suspense fallback={null}>
+          <Suspense fallback={<SuspenseFallback />}>
             <Project />
           </Suspense>
         ),
@@ -60,7 +63,7 @@ const router = createBrowserRouter([
       {
         path: "projects/:projectName",
         element: (
-          <Suspense fallback={null}>
+          <Suspense fallback={<SuspenseFallback />}>
             <ProjectDetail />
           </Suspense>
         ),
@@ -68,7 +71,7 @@ const router = createBrowserRouter([
       {
         path: "experience",
         element: (
-          <Suspense fallback={null}>
+          <Suspense fallback={<SuspenseFallback />}>
             <Experience />
           </Suspense>
         ),
@@ -79,8 +82,6 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    {/* <MusicProvider> */}
     <RouterProvider router={router} />
-    {/* </MusicProvider> */}
   </React.StrictMode>,
 );

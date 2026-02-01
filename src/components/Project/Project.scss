@@ -49,6 +49,11 @@
       margin-left: 20px;
       margin-top: 40px;
     }
+
+    @media screen and (max-width: 480px) {
+      margin-left: 0rem;
+      margin-top: 20px;
+    }
   }
 
   .project-grid {

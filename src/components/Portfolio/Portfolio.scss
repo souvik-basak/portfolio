@@ -20,11 +20,11 @@
 }
 
 .skills-container {
-  width: 60%;
+  width: 30%;
   height: 100%;
   position: absolute;
   top: 53%;
-  left: 68%;
+  right: -8%;
   transform: translate(-50%, -50%);
   display: flex;
   flex-wrap: wrap;
@@ -50,7 +50,6 @@
     touch-action: none;
     font-size: 4rem; // icon size
     color: #ffd700;
-    cursor: grab;
     // transition: transform 0.3s ease;
     transition:
       transform 0.3s ease,
@@ -67,22 +66,13 @@
       -o-transform: translateY(-8px) scale(1.02);
     }
 
-    &:active {
-      cursor: grabbing;
-    }
-
-    &.dragging {
-      z-index: 9999;
-      // stronger visual emphasis while dragging
-      cursor: grabbing;
-    }
-
     .skill-name {
       position: absolute;
       bottom: -22px;
       font-size: 0.8rem;
       color: #fff;
       background: rgba(0, 0, 0, 0.75);
+      z-index: 10;
       padding: 4px 8px;
       border-radius: 4px;
       white-space: nowrap;
@@ -124,11 +114,17 @@
 
 /* ✅ Responsive Adjustments */
 @media screen and (max-width: 1024px) {
+
   .container.portfolio-page .text-zone {
     width: 55%;
     left: 13%;
     top: 45%;
     font-size: 15px;
+  }
+    .container.portfolio-page .skills-container {
+    left: 75%;
+    gap: 20px;
+    top: 52%;
   }
 
   /* Mobile-specific performance hints */
@@ -184,7 +180,7 @@
   .container.portfolio-page .skills-container {
     width: 80%;
     left: 50%;
-    top: 40%;
+    top: 80%;
     transform: translateX(-50%);
   }
 
@@ -204,7 +200,7 @@
   .container.portfolio-page .skills-container {
     width: 90%;
     left: 50%;
-    top: 40%;
+    top: 80%;
     transform: translateX(-50%);
     gap: 15px;
   }

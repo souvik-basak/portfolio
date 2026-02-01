@@ -104,8 +104,10 @@
   .container.experience-page .text-zone {
     width: 100%;
     padding: 1.25rem;
-    left: 5%;
-
+      h1 {
+      margin-left: 1.8rem;
+      margin-bottom: 0.5rem;
+    }
     h3{
       font-size: 32px;
     }
@@ -243,10 +245,9 @@
   margin-bottom: 0.75rem;
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 768px) {
   .timeline {
     padding-left: 1.5rem;
-    right:10%;
   }
   .timeline-pin {
     left: 2px;

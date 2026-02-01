@@ -1,7 +1,7 @@
 .time-location-container {
   position: fixed;
   bottom: 10px;
-  right: 15px;
+  right: 20px;
   z-index: 9999;
   color: white;
   font-family: "BallingerMono-Regular", monospace;
@@ -31,9 +31,14 @@
     }
   }
 }
-
-
-
+@media screen and (max-width: 1024px) {
+  .time-location-container {
+    position: fixed;
+    top: -35em;
+    right: 44%;
+    
+  }
+}
 @media screen and (max-width: 768px) {
   .time-location-container {
     position: fixed;

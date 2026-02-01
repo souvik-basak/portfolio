@@ -1,11 +1,11 @@
 import { Outlet, useLocation } from "react-router-dom";
 import Sidebar from "../../Sidebar/Sidebar";
 import { Toaster } from "react-hot-toast";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { motion } from "framer-motion";
 import MusicToggle from "../MusicToggle/MusicToggle";
 import TimeLocation from "../TimeLocation/TimeLocation";
-// import Spotlight from "../Spotlight/Spotlight";
+import ScrollToTop from "../ScrollToTop/ScrollToTop";
 import { applyPageMetadata } from "../../seo";
 import "./Layout.scss";
 
@@ -17,34 +17,40 @@ function Layout() {
     applyPageMetadata(location.pathname);
   }, [location.pathname]);
 
+  // Memoize attention messages to prevent recreation
+  const attentionMessages = useMemo(
+    () => [
+      "Full stack developer",
+      "Building web applications",
+      "Clean and scalable code",
+      "Modern frontend and backend",
+      "View my projects",
+    ],
+    [],
+  );
+
   // Tab visibility listener - change title when user switches tabs
-useEffect(() => {
-  const originalTitle = document.title;
+  useEffect(() => {
+    const originalTitle = document.title;
 
-  const attentionMessages = [
-    "Full stack developer",
-    "Building web applications",
-    "Clean and scalable code",
-    "Modern frontend and backend",
-    "View my projects"
-  ];
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        const randomIndex = Math.floor(
+          Math.random() * attentionMessages.length,
+        );
+        document.title = attentionMessages[randomIndex];
+      } else {
+        document.title = originalTitle;
+      }
+    };
 
-  const handleVisibilityChange = () => {
-    if (document.hidden) {
-      const randomIndex = Math.floor(Math.random() * attentionMessages.length);
-      document.title = attentionMessages[randomIndex];
-    } else {
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
       document.title = originalTitle;
-    }
-  };
-
-  document.addEventListener("visibilitychange", handleVisibilityChange);
-
-  return () => {
-    document.removeEventListener("visibilitychange", handleVisibilityChange);
-    document.title = originalTitle;
-  };
-}, []);
+    };
+  }, [attentionMessages]);
 
   return (
     <div className="App">
@@ -98,6 +104,7 @@ useEffect(() => {
           >
             <TimeLocation />
           </motion.div>
+          <ScrollToTop />
         </div>
       </>
     </div>

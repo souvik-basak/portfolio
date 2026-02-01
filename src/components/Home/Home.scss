@@ -121,7 +121,7 @@ h2 {
     h1 {
       // top: 50%;
       // left: 50%;
-      font-size: 40px;
+      font-size: 55px;
       &::before {
         margin-top: -10px;
       }
@@ -173,7 +173,7 @@ h2 {
     h1 {
       // top: 50%;
       // left: 50%;
-      font-size: 35px;
+      font-size: 55px;
       &::before {
         margin-top: -10px;
       }
@@ -224,25 +224,24 @@ h2 {
       flex-direction: column;
       align-items: center;
       h1 {
-        font-size: 35px;
+        font-size: 55px;
         &::before {
           margin-top: -20px;
-          margin-left: 140px;
+          margin-left: 50px;
         }
         &::after {
-          margin-top: 40px;
-          margin-left: -10px;
+          margin-top: 60px;
+          margin-left: 0px;
         }
         img {
-          width: 20px;
+          width: 40px;
           margin-left: 15px;
         }
       }
       h2 {
         margin-top: 70px;
         margin-bottom: 40px;
-        font-size: 15px;
-        padding-left: 4em;
+        font-size: 18px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -258,7 +257,6 @@ h2 {
   .home-page {
     .text-zone {
       top: 50%;
-      width: 90%;
       h1 {
         font-size: 26px;
         margin-top: 30px;
@@ -269,7 +267,7 @@ h2 {
         }
         &::after {
           margin-top: 40px;
-          margin-left: -10px;
+          margin-left: -50px;
         }
         img {
           width: 20px;
@@ -279,7 +277,6 @@ h2 {
       h2 {
         margin-top: 70px;
         margin-bottom: 40px;
-        padding-left: 0;
       }
       .flat-button {
         float: none;
@@ -288,10 +285,9 @@ h2 {
     }
     .btn-set {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       align-items: center;
       justify-content: center;
-      margin-right: 2.5em;
       gap: 20px;
       
 

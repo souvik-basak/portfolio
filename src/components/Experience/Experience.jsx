@@ -2,6 +2,7 @@ import "./Experience.scss";
 import AnimatedLetters from "../Animation/Animation";
 import { useEffect, useState } from "react";
 import experiences from "../../data/experience.json";
+import ScrollToTopMobile from "../ScrollToTop/ScrollToTopMobile";
 
 // use the first experience entry for now; the JSON makes it easy to add more later
 const experience =
@@ -14,8 +15,6 @@ const Experience = () => {
     const t = setTimeout(() => setLetterClass("text-animate-hover"), 4000);
     return () => clearTimeout(t);
   }, []);
-
-  // Details are shown by default and there is no toggle UI per user request
 
   return (
     <div className="container experience-page">
@@ -52,6 +51,7 @@ const Experience = () => {
           </article>
         </section>
       </div>
+      <ScrollToTopMobile />
     </div>
   );
 };

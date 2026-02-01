@@ -1,6 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
 import "./Sidebar.scss";
-// import { gsap } from "gsap";
 import LogoS from "../assets/images/logo-s.avif";
 import LogoSub from "../assets/images/logo-sub.webp";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -20,37 +19,57 @@ import {
   faLinkedin,
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
-import { useState } from "react";
+import { useState, useCallback, useMemo, memo } from "react";
 import VisitorCounter from "../components/VisitorCounter/VisitorCounter";
+
+// Memoize VisitorCounter to prevent unnecessary re-renders
+const MemoizedVisitorCounter = memo(VisitorCounter);
 
 const Sidebar = () => {
   const [showNav, setShowNav] = useState(false);
-  const prefetchRoutes = {
-    about: () => import("../components/About/About"),
-    contact: () => import("../components/Contact/Contact"),
-    skills: () => import("../components/Portfolio/Portfolio"),
-    project: () => import("../components/Project/Project"),
-    experience: () => import("../components/Experience/Experience"),
-  };
 
-  const prefetch = (key) => {
-    const load = prefetchRoutes[key];
-    if (load) {
-      load();
-    }
-  };
+  // Memoize prefetch routes
+  const prefetchRoutes = useMemo(
+    () => ({
+      about: () => import("../components/About/About"),
+      contact: () => import("../components/Contact/Contact"),
+      skills: () => import("../components/Portfolio/Portfolio"),
+      project: () => import("../components/Project/Project"),
+      experience: () => import("../components/Experience/Experience"),
+    }),
+    [],
+  );
 
-  const prefetchHandlers = (key) => ({
-    onMouseEnter: () => prefetch(key),
-    onFocus: () => prefetch(key),
-    onTouchStart: () => prefetch(key),
-    onClick: () => prefetch(key),
-  });
+  // Memoize prefetch function
+  const prefetch = useCallback(
+    (key) => {
+      const load = prefetchRoutes[key];
+      if (load) {
+        load();
+      }
+    },
+    [prefetchRoutes],
+  );
+
+  // Memoize prefetch handlers
+  const prefetchHandlers = useCallback(
+    (key) => ({
+      onMouseEnter: () => prefetch(key),
+      onFocus: () => prefetch(key),
+      onTouchStart: () => prefetch(key),
+      onClick: () => prefetch(key),
+    }),
+    [prefetch],
+  );
+
+  const handleNavClose = useCallback(() => setShowNav(false), []);
+  const handleNavOpen = useCallback(() => setShowNav(true), []);
+
   return (
     <div className="nav-bar">
       <Link className="logo" to="/">
-        <img src={LogoS} alt="logo" />
-        <img className="sub-logo" src={LogoSub} alt="sub-logo" />
+        <img src={LogoS} alt="logo" loading="lazy" />
+        <img className="sub-logo" src={LogoSub} alt="sub-logo" loading="lazy" />
       </Link>
 
       <nav className={showNav ? "mobile-show" : ""}>
@@ -61,7 +80,7 @@ const Sidebar = () => {
             color="#ffd700"
             size="3x"
             className="close-icon"
-            onClick={() => setShowNav(false)}
+            onClick={handleNavClose}
           />
         </div>
 
@@ -70,7 +89,7 @@ const Sidebar = () => {
           className="home-link"
           activeclassname="active"
           to="/"
-          onClick={() => setShowNav(false)}
+          onClick={handleNavClose}
         >
           <FontAwesomeIcon icon={faHome} color="#4d4d4e" />
         </NavLink>
@@ -82,7 +101,7 @@ const Sidebar = () => {
           {...prefetchHandlers("about")}
           onClick={() => {
             prefetch("about");
-            setShowNav(false);
+            handleNavClose();
           }}
         >
           <FontAwesomeIcon icon={faUser} color="#4d4d4e" />
@@ -95,7 +114,7 @@ const Sidebar = () => {
           {...prefetchHandlers("experience")}
           onClick={() => {
             prefetch("experience");
-            setShowNav(false);
+            handleNavClose();
           }}
         >
           <FontAwesomeIcon icon={faSuitcase} color="#4d4d4e" />
@@ -108,7 +127,7 @@ const Sidebar = () => {
           {...prefetchHandlers("skills")}
           onClick={() => {
             prefetch("skills");
-            setShowNav(false);
+            handleNavClose();
           }}
         >
           <FontAwesomeIcon icon={faCode} color="#4d4d4e" />
@@ -121,7 +140,7 @@ const Sidebar = () => {
           {...prefetchHandlers("project")}
           onClick={() => {
             prefetch("project");
-            setShowNav(false);
+            handleNavClose();
           }}
         >
           <FontAwesomeIcon icon={faDiagramProject} color="#4d4d4e" />
@@ -134,7 +153,7 @@ const Sidebar = () => {
           {...prefetchHandlers("contact")}
           onClick={() => {
             prefetch("contact");
-            setShowNav(false);
+            handleNavClose();
           }}
         >
           <FontAwesomeIcon icon={faEnvelope} color="#4d4d4e" />
@@ -167,7 +186,7 @@ const Sidebar = () => {
           </a>
         </div>
         <div className="mobile-counter">
-          <VisitorCounter />
+          <MemoizedVisitorCounter />
         </div>
       </nav>
 
@@ -207,17 +226,17 @@ const Sidebar = () => {
         </li>
       </ul>
 
-      <VisitorCounter />
+      <MemoizedVisitorCounter />
 
       <FontAwesomeIcon
         icon={faBars}
         color="#ffd700"
         className="burger-icon"
         size="3x"
-        onClick={() => setShowNav(true)}
+        onClick={handleNavOpen}
       />
     </div>
   );
 };
 
-export default Sidebar;
+export default memo(Sidebar);

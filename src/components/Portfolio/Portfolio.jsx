@@ -1,7 +1,6 @@
 import "./Portfolio.scss";
 import AnimatedLetters from "../Animation/Animation";
-import dragSoundSrc from "../../assets/music/dragSound.mp3";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import {
   FaHtml5,
@@ -106,63 +105,13 @@ const skillVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.15 } },
 };
 const Portfolio = () => {
-  const audioRef = useRef(null);
-  const [showAlert, setShowAlert] = useState(true);
   const [letterClass, setLetterClass] = useState("text-animate");
-  const containerRef = useRef(null);
-  const [draggingIndex, setDraggingIndex] = useState(null);
-  const [dragConstraints, setDragConstraints] = useState({
-    left: 0,
-    top: 0,
-    right: 0,
-    bottom: 0,
-  });
 
   useEffect(() => {
     setTimeout(() => {
       setLetterClass("text-animate-hover");
     }, 4000);
   }, []);
-  useEffect(() => {
-    if (containerRef.current) {
-      const { width, height } = containerRef.current.getBoundingClientRect();
-      setDragConstraints({
-        left: -width / 4,
-        top: -height / 4,
-        right: width / 4,
-        bottom: height / 4,
-      });
-    }
-  }, []);
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowAlert(false);
-    }, 1000);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  useEffect(() => {
-    audioRef.current = new Audio(dragSoundSrc);
-    audioRef.current.volume = 0.05; // Set volume low for subtlety
-    audioRef.current.preload = "auto";
-  }, []);
-
-  const handleDragStart = (index) => {
-    setDraggingIndex(index);
-    if (audioRef.current) {
-      audioRef.current.currentTime = 0;
-      audioRef.current.play().catch(() => {});
-    }
-  };
-
-  const handleDragEnd = () => {
-    setDraggingIndex(null);
-    if (audioRef.current) {
-      audioRef.current.pause();
-      audioRef.current.currentTime = 0;
-    }
-  };
 
   return (
     <div>
@@ -177,10 +126,10 @@ const Portfolio = () => {
           </h1>
 
           <p>
-            I am a fullstack developer building fast,
-            accessible web applications. My core stack centers on React,
-            Next.js, and TypeScript, with backend systems built in Node.js and
-            Express and deployed to cloud platforms.
+            I am a fullstack developer building fast, accessible web
+            applications. My core stack centers on React, Next.js, and
+            TypeScript, with backend systems built in Node.js and Express and
+            deployed to cloud platforms.
           </p>
 
           <p>
@@ -221,53 +170,31 @@ const Portfolio = () => {
           </p>
         </div>
 
-        <div className="skills-container" ref={containerRef}>
-          {showAlert && (
-            <span className="drag-alert">You can drag the elements</span>
-          )}
-          <motion.div
-            className="skills-container"
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-          >
-            {skills.map((skill, index) => (
-              <motion.div
-                key={index}
-                className={`skill-item ${draggingIndex === index ? "dragging" : ""}`}
-                variants={skillVariants}
-                drag
-                onDragStart={() => handleDragStart(index)}
-                onDragEnd={handleDragEnd}
-                dragConstraints={dragConstraints}
-                dragElastic={1}
-                dragTransition={{
-                  power: 0.3,
-                  timeConstant: 200,
-                  bounceStiffness: 100,
-                  bounceDamping: 10,
-                }}
-                transition={{
-                  type: "spring",
-                  stiffness: 150,
-                  damping: 20,
-                  mass: 0.5,
-                }}
-                whileHover={{
-                  scale: 1.2,
-                  transition: { duration: 0.3, ease: "easeInOut" },
-                }}
-                whileTap={{
-                  scale: 0.95,
-                  transition: { duration: 0.2, ease: "easeInOut" },
-                }}
-              >
-                {skill.icon}
-                <span className="skill-name">{skill.name}</span>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
+        <motion.div
+          className="skills-container"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          {skills.map((skill, index) => (
+            <motion.div
+              key={index}
+              className="skill-item"
+              variants={skillVariants}
+              whileHover={{
+                scale: 1.2,
+                transition: { duration: 0.3, ease: "easeInOut" },
+              }}
+              whileTap={{
+                scale: 0.95,
+                transition: { duration: 0.2, ease: "easeInOut" },
+              }}
+            >
+              {skill.icon}
+              <span className="skill-name">{skill.name}</span>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </div>
   );
