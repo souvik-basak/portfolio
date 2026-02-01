@@ -9,22 +9,26 @@ const containerVariants = {
     opacity: 1,
     transition: {
       when: "beforeChildren",
-      staggerChildren: 0.3,
+      staggerChildren: 0.2,
     },
   },
 };
 
 const textVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } },
+  hidden: { opacity: 0, y: 12 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" },
+  },
 };
 
-const barVariants = {
-  initial: { width: "0%" },
-  animate: {
-    width: "100%",
+const cursorVariants = {
+  blink: {
+    opacity: [0, 1],
     transition: {
-      duration: 3.5,
+      duration: 1,
+      repeat: Infinity,
       ease: "easeInOut",
     },
   },
@@ -41,22 +45,24 @@ const FirstTimeLoader = () => {
       <motion.div className="icon" variants={textVariants}>
         <FontAwesomeIcon icon={faHeadphones} size="3x" color="#ffd9006f" />
         <motion.p className="headphone-text" variants={textVariants}>
-          [Use headphones for the best experience]
+          This site includes sound. Headphones recommended.
         </motion.p>
       </motion.div>
 
       <motion.p className="intro-text" variants={textVariants}>
-        I’m glad you’re here. Take a deep breath, put on your headphones, and
-        enjoy this immersive journey into my creative space.
+        Full stack developer portfolio. Focused on clean code, performance, and
+        real world applications.
       </motion.p>
 
-      <motion.div className="loader-bar-wrapper">
-        <motion.div
-          className="loader-bar"
-          variants={barVariants}
-          initial="initial"
-          animate="animate"
-        />
+      <motion.div className="terminal-line" variants={textVariants}>
+        <span>&gt; Loading projects</span>
+        <motion.span
+          className="cursor"
+          variants={cursorVariants}
+          animate="blink"
+        >
+          _
+        </motion.span>
       </motion.div>
     </motion.div>
   );

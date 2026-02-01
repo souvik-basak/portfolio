@@ -1,21 +1,33 @@
 import { Outlet, useLocation } from "react-router-dom";
 import Sidebar from "../../Sidebar/Sidebar";
 import { Toaster } from "react-hot-toast";
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import MusicToggle from "../MusicToggle/MusicToggle";
 import TimeLocation from "../TimeLocation/TimeLocation";
 import ScrollToTop from "../ScrollToTop/ScrollToTop";
+import FirstTimeLoader from "../FirstTimeLoader/FirstTimeLoader";
 import { applyPageMetadata } from "../../seo";
 import "./Layout.scss";
 
 function Layout() {
   const location = useLocation();
+  const [showLoader, setShowLoader] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return !localStorage.getItem("hasVisited");
+  });
 
   // Update document metadata per route for basic SPA SEO
   useEffect(() => {
     applyPageMetadata(location.pathname);
   }, [location.pathname]);
+
+  useEffect(() => {
+    if (!showLoader) return;
+    localStorage.setItem("hasVisited", "true");
+    const timer = setTimeout(() => setShowLoader(false), 2000);
+    return () => clearTimeout(timer);
+  }, [showLoader]);
 
   // Memoize attention messages to prevent recreation
   const attentionMessages = useMemo(
@@ -51,6 +63,10 @@ function Layout() {
       document.title = originalTitle;
     };
   }, [attentionMessages]);
+
+  if (showLoader) {
+    return <FirstTimeLoader />;
+  }
 
   return (
     <div className="App">

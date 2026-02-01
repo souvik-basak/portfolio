@@ -7,42 +7,38 @@
   background-color: #01141f;
   color: #ffd700;
   font-family: monospace;
+  text-align: center;
+}
 
-  .icon {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 20px;
-    color: #ffd9006f;
-  }
+.icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 16px;
+  color: #ffd9006f;
+}
 
-  .headphone-text {
-    font-size: 1.2rem;
-    align-items: center;
-    margin-top: 10px;
-    color: #cccccc62;
-  }
+.headphone-text {
+  font-size: 1.5rem;
+  margin-top: 8px;
+  color: #b0b0b0;
+}
 
+.intro-text {
+  font-size: 2rem;
+  max-width: 70%;
+  margin: 12px 0 24px;
+  color: #f4de63a5;
+}
 
-  .intro-text {
-    font-size: 2rem;
-    margin-top: 0px;
-    text-align: center;
-    max-width: 80%;
-    color: #f4de63a5;
-  }
+.terminal-line {
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
+  color: #9cdcfe;
+}
 
-  .loader-bar-wrapper {
-    width: 30%;
-    height: 10px;
-    background-color: #4d4d4e;
-    margin-top: 0px;
-    border-radius: 5px;
-    overflow: hidden;
-  }
-
-  .loader-bar {
-    height: 100%;
-    background-color: #ffd9006f;
-  }
+.cursor {
+  margin-left: 4px;
+  color: #9cdcfe;
 }
