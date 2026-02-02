@@ -22,12 +22,13 @@ function Layout() {
     applyPageMetadata(location.pathname);
   }, [location.pathname]);
 
-  useEffect(() => {
+  const handleLoaderComplete = () => {
     if (!showLoader) return;
-    localStorage.setItem("hasVisited", "true");
-    const timer = setTimeout(() => setShowLoader(false), 2000);
-    return () => clearTimeout(timer);
-  }, [showLoader]);
+    if (typeof window !== "undefined") {
+      localStorage.setItem("hasVisited", "true");
+    }
+    setShowLoader(false);
+  };
 
   // Memoize attention messages to prevent recreation
   const attentionMessages = useMemo(
@@ -65,7 +66,7 @@ function Layout() {
   }, [attentionMessages]);
 
   if (showLoader) {
-    return <FirstTimeLoader />;
+    return <FirstTimeLoader onComplete={handleLoaderComplete} />;
   }
 
   return (

@@ -34,13 +34,14 @@ const cursorVariants = {
   },
 };
 
-const FirstTimeLoader = () => {
+const FirstTimeLoader = ({ onComplete }) => {
   return (
     <motion.div
       className="first-time-loader"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
+      onAnimationComplete={onComplete}
     >
       <motion.div className="icon" variants={textVariants}>
         <FontAwesomeIcon icon={faHeadphones} size="3x" color="#ffd9006f" />
