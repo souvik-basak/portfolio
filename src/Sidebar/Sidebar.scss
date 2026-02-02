@@ -154,7 +154,6 @@
   }
 }
 
-// Hide desktop social icons on mobile
 @media screen and (max-width: 1024px) {
   .nav-bar {
     background: transparent;
@@ -191,8 +190,14 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        color: #4d4d4e;
+        color: #b8b8b8;
         text-decoration: none;
+
+        &:hover,
+        &:hover:after,
+        &:hover svg {
+          color: #ffd700;
+        }
       }
 
       a:after {
@@ -200,10 +205,13 @@
         position: initial;
         width: auto;
         margin-left: 10px;
+        color: #b8b8b8;
+        font-size: 14px;
       }
 
       a svg {
         opacity: 1 !important;
+        color: #b8b8b8;
       }
 
       .mobile-socials {
@@ -211,11 +219,10 @@
         justify-content: center;
         gap: 15px;
         margin-top: auto;
-        padding: 20px 0 5px;
 
         a svg {
-          color: #4d4d4e;
-          font-size: 20px;
+          color: #b8b8b8;
+          font-size: 22px;
           transition: all 0.3s ease;
         }
 
@@ -226,6 +233,7 @@
 
       .mobile-counter {
         display: flex;
+        padding-bottom: 20px;
       }
     }
 
