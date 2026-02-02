@@ -1,5 +1,5 @@
 .project-detail-page {
-  padding-left: 21rem;
+  padding-left: 20rem;
   padding-right: 5rem;
   padding-top: 5rem;
   padding-bottom: 4rem;
@@ -45,7 +45,7 @@
     align-items: center;
     gap: 0.5rem;
     margin-bottom: 2rem;
-    margin-top: 1rem;
+    margin-left:6rem;
     background: transparent;
     border: none;
     padding: 8px;
@@ -61,7 +61,7 @@
       transform: translateX(-5px);
     }
 
-    @media screen and (max-width: 1024px) {
+    @media screen and (max-width: 1280px) {
       margin-left: 0;
     }
 
@@ -108,23 +108,27 @@
 
   .project-image-section {
     margin-bottom: 3rem;
-    border: 1px solid #0d1623;
+    border: none;
     border-radius: 10px;
     overflow: hidden;
-
+    display: flex;
+    align-items: center;
+    justify-content: center;
     .detail-image {
-      width: 100%;
-      height: auto;
-      max-height: 500px;
+      width: 60%;
+      height: 100%;
+      max-height: 800px;
       object-fit: cover;
       display: block;
 
       @media screen and (max-width: 768px) {
-        max-height: 350px;
+        width: 100%;
+        max-height: 400px;
       }
 
       @media screen and (max-width: 480px) {
-        max-height: 250px;
+        width: 100%;
+        max-height: 300px;
       }
     }
   }

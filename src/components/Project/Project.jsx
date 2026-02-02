@@ -7,22 +7,11 @@ import AnimatedLetters from "../Animation/Animation";
 
 import { projects } from "../../data/projects";
 
-const ProjectItem = ({ project, index }) => {
+const ProjectItem = ({ project }) => {
   const navigate = useNavigate();
 
   return (
-    <motion.div
-      className="project-card"
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{
-        duration: 0.1,
-        delay: index * 0.0001,
-        ease: "easeOut",
-      }}
-      whileHover={{ scale: 1.08 }}
-    >
+    <motion.div className="project-card" whileHover={{ scale: 1.05 }}>
       <h2 className="project-title">{project.name}</h2>
       <p className="project-description">{project.description}</p>
       <button

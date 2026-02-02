@@ -7,6 +7,7 @@ import MusicToggle from "../MusicToggle/MusicToggle";
 import TimeLocation from "../TimeLocation/TimeLocation";
 import ScrollToTop from "../ScrollToTop/ScrollToTop";
 import FirstTimeLoader from "../FirstTimeLoader/FirstTimeLoader";
+import MobilePageNav from "../MobilePageNav/MobilePageNav";
 import { applyPageMetadata } from "../../seo";
 import "./Layout.scss";
 
@@ -123,6 +124,7 @@ function Layout() {
           </motion.div>
           <ScrollToTop />
         </div>
+        <MobilePageNav />
       </>
     </div>
   );

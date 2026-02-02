@@ -19,7 +19,8 @@ import {
   faLinkedin,
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
-import { useState, useCallback, useMemo, memo } from "react";
+import { useState, useCallback, useMemo, memo, useEffect } from "react";
+import { motion } from "framer-motion";
 import VisitorCounter from "../components/VisitorCounter/VisitorCounter";
 
 // Memoize VisitorCounter to prevent unnecessary re-renders
@@ -27,6 +28,16 @@ const MemoizedVisitorCounter = memo(VisitorCounter);
 
 const Sidebar = () => {
   const [showNav, setShowNav] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const mediaQuery = window.matchMedia("(max-width: 1024px)");
+    const handleChange = () => setIsMobile(mediaQuery.matches);
+    handleChange();
+    mediaQuery.addEventListener("change", handleChange);
+    return () => mediaQuery.removeEventListener("change", handleChange);
+  }, []);
 
   // Memoize prefetch routes
   const prefetchRoutes = useMemo(
@@ -65,6 +76,30 @@ const Sidebar = () => {
   const handleNavClose = useCallback(() => setShowNav(false), []);
   const handleNavOpen = useCallback(() => setShowNav(true), []);
 
+  const navVariants = {
+    open: {
+      y: 0,
+      opacity: 1,
+      transition: { duration: 0.3, ease: "easeOut" },
+    },
+    closed: {
+      y: "-100%",
+      opacity: 0,
+      transition: { duration: 0.25, ease: "easeIn" },
+    },
+  };
+
+  const overlayVariants = {
+    open: {
+      opacity: 0.45,
+      transition: { duration: 0.3, ease: "easeOut" },
+    },
+    closed: {
+      opacity: 0,
+      transition: { duration: 0.25, ease: "easeIn" },
+    },
+  };
+
   return (
     <div className="nav-bar">
       <Link className="logo" to="/">
@@ -72,7 +107,13 @@ const Sidebar = () => {
         <img className="sub-logo" src={LogoSub} alt="sub-logo" loading="lazy" />
       </Link>
 
-      <nav className={showNav ? "mobile-show" : ""}>
+      <motion.nav
+        className={showNav ? "mobile-show" : ""}
+        variants={navVariants}
+        initial={false}
+        animate={isMobile ? (showNav ? "open" : "closed") : "open"}
+        style={{ pointerEvents: isMobile && !showNav ? "none" : "auto" }}
+      >
         {/* Mobile header */}
         <div className="nav-header">
           <FontAwesomeIcon
@@ -188,7 +229,16 @@ const Sidebar = () => {
         <div className="mobile-counter">
           <MemoizedVisitorCounter />
         </div>
-      </nav>
+      </motion.nav>
+
+      <motion.div
+        className="nav-overlay"
+        variants={overlayVariants}
+        initial={false}
+        animate={isMobile ? (showNav ? "open" : "closed") : "closed"}
+        onClick={handleNavClose}
+        style={{ pointerEvents: isMobile && showNav ? "auto" : "none" }}
+      />
 
       {/* Desktop social links */}
       <ul>

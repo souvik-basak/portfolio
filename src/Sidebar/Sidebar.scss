@@ -148,6 +148,10 @@
   .close-icon {
     display: none;
   }
+
+  .nav-overlay {
+    display: none;
+  }
 }
 
 // Hide desktop social icons on mobile
@@ -171,7 +175,7 @@
       position: fixed;
       z-index: 2;
       margin: 0;
-      display: none;
+      display: flex;
       flex-direction: column;
       align-items: center;
       padding-top: 50px;
@@ -200,10 +204,6 @@
 
       a svg {
         opacity: 1 !important;
-      }
-
-      &.mobile-show {
-        display: flex;
       }
 
       .mobile-socials {
@@ -236,6 +236,14 @@
       top: 15px;
       cursor: pointer;
       right: 15px;
+    }
+
+    .nav-overlay {
+      display: block;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 1;
     }
 
     .close-icon:active {
