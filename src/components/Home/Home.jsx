@@ -66,8 +66,10 @@ const Home = () => {
               idx={22}
             />
           </h1>
-          <p>A coder by day, problem solver by night.</p>
-          <h2>Software Developer <br/> React.js • Node.js • Express.js</h2>
+          <p>I build fast, accessible web applications.</p>
+          <h2>
+            Full stack developer <br /> React.js • Node.js • Express.js
+          </h2>
           <div className="btn-set">
             <Link to="/contact">
               <EncryptButton text="CONTACT ME" />

@@ -28,9 +28,14 @@ const MemoizedVisitorCounter = memo(VisitorCounter);
 
 const Sidebar = () => {
   const [showNav, setShowNav] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(
+    typeof window !== "undefined" &&
+      window.matchMedia("(max-width: 1024px)").matches,
+  );
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     if (typeof window === "undefined") return;
     const mediaQuery = window.matchMedia("(max-width: 1024px)");
     const handleChange = () => setIsMobile(mediaQuery.matches);
@@ -110,8 +115,16 @@ const Sidebar = () => {
       <motion.nav
         className={showNav ? "mobile-show" : ""}
         variants={navVariants}
-        initial={false}
-        animate={isMobile ? (showNav ? "open" : "closed") : "open"}
+        initial="closed"
+        animate={
+          mounted
+            ? isMobile
+              ? showNav
+                ? "open"
+                : "closed"
+              : "open"
+            : "closed"
+        }
         style={{ pointerEvents: isMobile && !showNav ? "none" : "auto" }}
       >
         {/* Mobile header */}
@@ -248,8 +261,16 @@ const Sidebar = () => {
       <motion.div
         className="nav-overlay"
         variants={overlayVariants}
-        initial={false}
-        animate={isMobile ? (showNav ? "open" : "closed") : "closed"}
+        initial="closed"
+        animate={
+          mounted
+            ? isMobile
+              ? showNav
+                ? "open"
+                : "closed"
+              : "closed"
+            : "closed"
+        }
         onClick={handleNavClose}
         style={{ pointerEvents: isMobile && showNav ? "auto" : "none" }}
       />
