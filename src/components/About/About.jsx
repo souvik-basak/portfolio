@@ -19,7 +19,7 @@ const About = () => {
     }, 4000);
   }, []);
   return (
-    <>
+    <main>
       <div className="container about-page">
         <div className="text-zone">
           <h1 className="page-title">
@@ -30,10 +30,10 @@ const About = () => {
             />
           </h1>
           <p>
-            I am a full stack developer who builds fast,
-            accessible web applications. I work primarily with React, Next.js,
-            TypeScript, and modern frontend tooling, with a strong focus on
-            performance and user experience.
+            I am a full stack developer who builds fast, accessible web
+            applications. I work primarily with React, Next.js, TypeScript, and
+            modern frontend tooling, with a strong focus on performance and user
+            experience.
           </p>
 
           <p>
@@ -79,7 +79,7 @@ const About = () => {
           </div>
         </div>
       </div>
-    </>
+    </main>
   );
 };
 

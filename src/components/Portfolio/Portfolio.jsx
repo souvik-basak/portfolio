@@ -114,7 +114,7 @@ const Portfolio = () => {
   }, []);
 
   return (
-    <div>
+    <main>
       <div className="container portfolio-page">
         <div className="text-zone">
           <h1 className="page-title">
@@ -196,7 +196,7 @@ const Portfolio = () => {
           ))}
         </motion.div>
       </div>
-    </div>
+    </main>
   );
 };
 

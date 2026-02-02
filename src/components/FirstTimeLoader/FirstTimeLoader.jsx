@@ -36,36 +36,37 @@ const cursorVariants = {
 
 const FirstTimeLoader = ({ onComplete }) => {
   return (
-    <motion.div
-      className="first-time-loader"
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-      onAnimationComplete={onComplete}
-    >
-      <motion.div className="icon" variants={textVariants}>
-        <FontAwesomeIcon icon={faHeadphones} size="3x" color="#ffd9006f" />
-        <motion.p className="headphone-text" variants={textVariants}>
-          This site includes sound. Headphones recommended.
+    <main className="first-time-loader">
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        onAnimationComplete={onComplete}
+      >
+        <motion.div className="icon" variants={textVariants}>
+          <FontAwesomeIcon icon={faHeadphones} size="3x" color="#ffd9006f" />
+          <motion.p className="headphone-text" variants={textVariants}>
+            This site includes sound. Headphones recommended.
+          </motion.p>
+        </motion.div>
+
+        <motion.p className="intro-text" variants={textVariants}>
+          Full stack developer portfolio. Focused on clean code, performance, and
+          real world applications.
         </motion.p>
-      </motion.div>
 
-      <motion.p className="intro-text" variants={textVariants}>
-        Full stack developer portfolio. Focused on clean code, performance, and
-        real world applications.
-      </motion.p>
-
-      <motion.div className="terminal-line" variants={textVariants}>
-        <span>&gt; Loading projects</span>
-        <motion.span
-          className="cursor"
-          variants={cursorVariants}
-          animate="blink"
-        >
-          _
-        </motion.span>
+        <motion.div className="terminal-line" variants={textVariants}>
+          <span>&gt; Loading projects</span>
+          <motion.span
+            className="cursor"
+            variants={cursorVariants}
+            animate="blink"
+          >
+            _
+          </motion.span>
+        </motion.div>
       </motion.div>
-    </motion.div>
+    </main>
   );
 };
 

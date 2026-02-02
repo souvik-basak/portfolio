@@ -73,6 +73,10 @@ function Layout() {
   return (
     <div className="App">
       <>
+        {/* Visually hidden h1 for accessibility */}
+        <h1 style={{ position: 'absolute', left: '-9999px', width: '1px', height: '1px', overflow: 'hidden' }}>
+          Souvik Basak - Full Stack Developer Portfolio
+        </h1>
         {/* <Spotlight /> */}
         <div className="music-toggle-container">
           <MusicToggle />

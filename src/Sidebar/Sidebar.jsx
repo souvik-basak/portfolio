@@ -131,6 +131,7 @@ const Sidebar = () => {
           activeclassname="active"
           to="/"
           onClick={handleNavClose}
+          aria-label="Home"
         >
           <FontAwesomeIcon icon={faHome} color="#4d4d4e" />
         </NavLink>
@@ -139,6 +140,7 @@ const Sidebar = () => {
           activeclassname="active"
           className="about-link"
           to="/about"
+          aria-label="About Me"
           {...prefetchHandlers("about")}
           onClick={() => {
             prefetch("about");
@@ -152,6 +154,7 @@ const Sidebar = () => {
           activeclassname="active"
           to="/experience"
           className="experience-link"
+          aria-label="Experience"
           {...prefetchHandlers("experience")}
           onClick={() => {
             prefetch("experience");
@@ -165,6 +168,7 @@ const Sidebar = () => {
           activeclassname="active"
           className="skills-link"
           to="/skills"
+          aria-label="Skills"
           {...prefetchHandlers("skills")}
           onClick={() => {
             prefetch("skills");
@@ -178,6 +182,7 @@ const Sidebar = () => {
           activeclassname="active"
           to="/project"
           className="project-link"
+          aria-label="Projects"
           {...prefetchHandlers("project")}
           onClick={() => {
             prefetch("project");
@@ -191,6 +196,7 @@ const Sidebar = () => {
           activeclassname="active"
           to="/contact"
           className="contact-link"
+          aria-label="Contact"
           {...prefetchHandlers("contact")}
           onClick={() => {
             prefetch("contact");
@@ -205,6 +211,7 @@ const Sidebar = () => {
             href="https://www.linkedin.com/in/souvikbasak831365186/"
             target="_blank"
             rel="noreferrer"
+            aria-label="LinkedIn profile"
           >
             <FontAwesomeIcon icon={faLinkedin} />
           </a>
@@ -212,16 +219,23 @@ const Sidebar = () => {
             href="https://github.com/souvik-basak"
             target="_blank"
             rel="noreferrer"
+            aria-label="GitHub profile"
           >
             <FontAwesomeIcon icon={faGithub} />
           </a>
-          <a href="https://x.com/souvikbasak0" target="_blank" rel="noreferrer">
+          <a
+            href="https://x.com/souvikbasak0"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Twitter profile"
+          >
             <FontAwesomeIcon icon={faTwitter} />
           </a>
           <a
             href="https://www.instagram.com/souviiiiiik/"
             target="_blank"
             rel="noreferrer"
+            aria-label="Instagram profile"
           >
             <FontAwesomeIcon icon={faInstagram} />
           </a>
@@ -247,6 +261,7 @@ const Sidebar = () => {
             target="_blank"
             rel="noreferrer"
             href="https://www.linkedin.com/in/souvikbasak831365186/"
+            aria-label="LinkedIn profile"
           >
             <FontAwesomeIcon icon={faLinkedin} color="#4d4d4e" />
           </a>
@@ -256,12 +271,18 @@ const Sidebar = () => {
             target="_blank"
             rel="noreferrer"
             href="https://github.com/souvik-basak"
+            aria-label="GitHub profile"
           >
             <FontAwesomeIcon icon={faGithub} color="#4d4d4e" />
           </a>
         </li>
         <li>
-          <a target="_blank" rel="noreferrer" href="https://x.com/souvikbasak0">
+          <a
+            target="_blank"
+            rel="noreferrer"
+            href="https://x.com/souvikbasak0"
+            aria-label="Twitter profile"
+          >
             <FontAwesomeIcon icon={faTwitter} color="#4d4d4e" />
           </a>
         </li>
@@ -270,6 +291,7 @@ const Sidebar = () => {
             target="_blank"
             rel="noreferrer"
             href="https://www.instagram.com/souviiiiiik/"
+            aria-label="Instagram profile"
           >
             <FontAwesomeIcon icon={faInstagram} color="#4d4d4e" />
           </a>

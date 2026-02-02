@@ -17,7 +17,7 @@ const Experience = () => {
   }, []);
 
   return (
-    <div className="container experience-page">
+    <main className="container experience-page">
       <div className="text-zone">
         <h1>
           <AnimatedLetters
@@ -52,7 +52,7 @@ const Experience = () => {
         </section>
       </div>
       <ScrollToTopMobile />
-    </div>
+    </main>
   );
 };
 

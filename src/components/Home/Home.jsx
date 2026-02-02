@@ -35,7 +35,7 @@ const Home = () => {
     }, 1);
   }, []);
   return (
-    <>
+    <main>
       <div className="container home-page">
         <div className="text-zone">
           <h1>
@@ -66,7 +66,8 @@ const Home = () => {
               idx={22}
             />
           </h1>
-          <h2>Software Developer | React • Node.js • TypeScript</h2>
+          <p>A coder by day, problem solver by night.</p>
+          <h2>Software Developer <br/> React.js • Node.js • Express.js</h2>
           <div className="btn-set">
             <Link to="/contact">
               <EncryptButton text="CONTACT ME" />
@@ -78,7 +79,7 @@ const Home = () => {
         </div>
         <Logo />
       </div>
-    </>
+    </main>
   );
 };
 

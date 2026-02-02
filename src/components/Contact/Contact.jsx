@@ -141,7 +141,7 @@ const Contact = () => {
     setTouched({});
   };
   return (
-    <div>
+    <main>
       <div className="container contact-page">
         <div className="text-zone">
           <div className="availability-status">
@@ -164,10 +164,11 @@ const Contact = () => {
             />
           </h1>
           <p>
-  I am a full stack developer seeking new roles and project opportunities.
-  I focus on building scalable, production ready applications.
-  If you are hiring or want to discuss a role, contact me using the form below.
-</p>
+            I am a full stack developer seeking new roles and project
+            opportunities. I focus on building scalable, production ready
+            applications. If you are hiring or want to discuss a role, contact
+            me using the form below.
+          </p>
 
           <div className="contact-form">
             <form ref={refForm} onSubmit={handleSubmit}>
@@ -283,7 +284,7 @@ const Contact = () => {
           </MapContainer>
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 

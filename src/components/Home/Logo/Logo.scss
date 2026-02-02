@@ -4,7 +4,7 @@
   height: 642px;
   position: absolute;
   top: 0;
-  right: 15%;
+  right: 8%;
   bottom: 0;
   left: auto;
   margin: auto;
@@ -38,16 +38,28 @@
 
 @media screen and (max-width: 1200px) {
   .logo-container {
-    width: 350px !important;
-    height: 562px !important;
+    width: 200px !important;
+    height: 450px !important;
+    top: 20px !important;
+  }
+}
+
+@media screen and (max-width:1024px){
+  .logo-container {
+    width: 250px !important;
+    height: 400px !important;
+    top: -60px !important;
+  }
+  .svg-container {
+    stroke-width: 14;
   }
 }
 
 @media screen and (max-width: 768px) {
   .logo-container {
     width: 200px !important;
-    height: 400px !important;
-    right: 10% !important;
+    height: 350px !important;
+    top: 40px !important;
   }
   .svg-container {
     stroke-width: 12;
@@ -57,7 +69,7 @@
 @media screen and (max-width: 480px) {
   .logo-container {
     width: 150px !important;
-    height: 300px !important;
+    height: 350px !important;
     right: 5% !important;
   }
   .logo-container .solid-logo {

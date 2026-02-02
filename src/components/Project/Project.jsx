@@ -45,7 +45,7 @@ const Project = () => {
   }, []);
 
   return (
-    <div className="container project-page">
+    <main className="container project-page">
       <h1 className="page-title">
         <AnimatedLetters
           strArray={["P", "r", "o", "j", "e", "c", "t", "s"]}
@@ -58,7 +58,7 @@ const Project = () => {
           <ProjectItem key={project.id} project={project} index={index} />
         ))}
       </div>
-    </div>
+    </main>
   );
 };
 
