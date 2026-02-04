@@ -97,7 +97,7 @@
       position: relative;
       opacity: 1;
       clear: both;
-}
+    }
 
     li.half {
       width: 49%;
@@ -295,47 +295,106 @@
 }
 
 @media screen and (max-width: 1200px) {
-  .container .contact-page .text-zone h1 {
-    margin-left: 10px;
+  .container.contact-page {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .container.contact-page .text-zone {
+    width: 90%;
+    position: relative;
+    transform: none;
+    display: block;
+    padding: 20px;
+    left: 13%;
+    top: 8%;
+    box-sizing: border-box;
   }
   .map-wrap {
     float: none;
     width: 100%;
-    height: 600px;
+    height: 104%;
+    margin: 0;
+  }
+  .info-map {
+    float: none;
+    top: 79%;
+    right: 0%;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .container.contact-page {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    overflow-y: hidden;
+  }
+  .container.contact-page .text-zone {
+    width: 100%;
+    position: relative;
+    transform: none;
+    display: block;
+    padding: 20px;
+    left: 0%;
+    top: -10%;
+    box-sizing: border-box;
+  }
+  .map-wrap {
+    float: none;
+    width: 100%;
+    height: 100%;
     margin: 0;
   }
   .info-map {
     float: none;
     top: 50%;
+    left: 82%;
+    transform: translateX(-50%);
   }
 }
 
 @media screen and (max-width: 768px) {
-  .container .contact-page .text-zone h1 {
-    margin-left: 10px;
+  .container.contact-page {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    overflow: hidden;
   }
-  .info-map {
-    float: none;
-    top: 52%;
-    left: 60%;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .container .contact-page .text-zone h1 {
-    margin-left: 10px;
+  .container.contact-page .text-zone {
+    width: 100%;
+    position: relative;
+    transform: none;
+    display: block;
+    padding: 20px;
+    left: 0%;
+    top: -10%;
+    box-sizing: border-box;
   }
   .map-wrap {
     float: none;
     width: 100%;
-    height: 600px;
+    height: 100%;
     margin: 0;
   }
   .info-map {
     float: none;
-    top: 53.6%;
-    left: 33%;
-    width: 58%;
+    top: 50%;
+    left: 79.5%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .map-wrap {
+    float: none;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+  }
+  .info-map {
+    float: none;
+    top: 50%;
+    left: 71%;
+    width: 50%;
   }
 }
 

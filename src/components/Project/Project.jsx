@@ -10,13 +10,25 @@ import { projects } from "../../data/projects";
 const ProjectItem = ({ project }) => {
   const navigate = useNavigate();
 
+  const handleCardClick = () => {
+    navigate(`/projects/${project.slug}`);
+  };
+
   return (
-    <motion.div className="project-card" whileHover={{ scale: 1.05 }}>
+    <motion.div
+      className="project-card"
+      whileHover={{ scale: 1.05 }}
+      onClick={handleCardClick}
+      style={{ cursor: "pointer" }}
+    >
       <h2 className="project-title">{project.name}</h2>
       <p className="project-description">{project.description}</p>
       <button
         className="learn-more-btn"
-        onClick={() => navigate(`/projects/${project.slug}`)}
+        onClick={(e) => {
+          e.stopPropagation();
+          navigate(`/projects/${project.slug}`);
+        }}
       >
         Learn More...
       </button>

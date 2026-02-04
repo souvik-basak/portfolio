@@ -74,19 +74,43 @@
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1200px) {
+  .container.experience-page .text-zone{
+    width: 85%;
+    padding-top: 30rem;
+    left: 8%;
+    h3{
+      font-size: 34px;
+    }
+  }
+  .timeline {
+    position: relative;
+    margin-top: 3rem;
+    padding-left: 1rem;
+    contain: layout style paint;
+  }
+  .timeline-item {
+    position: relative;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    contain: layout style;
+  }
+}
+
+@media screen and (max-width: 1024px) {
   .container.experience-page .text-zone {
-    width: 96%;
-    padding: 1.5rem 2rem;
-    font-size: 1.5rem;
-    left: 1%;
-    margin-top: 2rem;
-  }
-  h3 {
-    font-size: 36px;
-  }
-  p {
-    font-size: 16px;
+    width: 87%;
+    padding-top: 8rem;
+    font-size: 1.6rem;
+    left: 8%;
+    h3 {
+      font-size: 30px;
+    }
+    p {
+      font-size: 16px;
+    }
   }
 
   .container.experience-page .text-zone .experience-list .exp-item {
@@ -99,7 +123,32 @@
   }
 }
 
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 768px) {
+  .container.experience-page .text-zone {
+    width: 96%;
+    padding: 1.5rem 2rem;
+    font-size: 1.5rem;
+    left: 1%;
+    margin-top: 2rem;
+  h3 {
+    font-size: 25px;
+  }
+  p {
+    font-size: 16px;
+  }
+  }
+
+  .container.experience-page .text-zone .experience-list .exp-item {
+    flex-direction: column;
+
+    .exp-left,
+    .exp-right {
+      width: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: 460px) {
   .container.experience-page .text-zone {
     width: 100%;
     padding: 1.25rem;
@@ -108,7 +157,7 @@
       margin-bottom: 0.5rem;
     }
     h3 {
-      font-size: 32px;
+      font-size: 20px;
     }
   }
 

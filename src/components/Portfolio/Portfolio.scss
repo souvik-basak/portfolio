@@ -252,6 +252,27 @@
   }
 }
 
+@media screen and (max-width: 440px) {
+  .container.portfolio-page .text-zone {
+    width: 90%;
+    left: 0%;
+    top: 0%;
+    font-size: 12px;
+  }
+
+  .container.portfolio-page .skills-container {
+    width: 90%;
+    left: 50%;
+    top: 80%;
+    transform: translateX(-50%);
+    gap: 12px;
+  }
+
+  .container.portfolio-page .skills-container .skill-item {
+    font-size: 3.5rem;
+  }
+}
+
 @media screen and (max-width: 360px) {
   .container.portfolio-page .text-zone {
     width: 90%;
