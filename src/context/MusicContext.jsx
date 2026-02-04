@@ -4,7 +4,7 @@ const MusicContext = createContext();
 
 export const MusicProvider = ({ children }) => {
   const [isPlaying, setIsPlaying] = useState(true);
-  const [volume, setVolume] = useState(0.03);
+  const [volume, setVolume] = useState(0.2);
 
   useEffect(() => {
     const audio = document.getElementById("background-music");

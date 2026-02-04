@@ -5,7 +5,7 @@ import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import MusicToggle from "../MusicToggle/MusicToggle";
 import TimeLocation from "../TimeLocation/TimeLocation";
-import ScrollToTop from "../ScrollToTop/ScrollToTop";
+// import ScrollToTop from "../ScrollToTop/ScrollToTop";
 import FirstTimeLoader from "../FirstTimeLoader/FirstTimeLoader";
 import MobilePageNav from "../MobilePageNav/MobilePageNav";
 import { applyPageMetadata } from "../../seo";
@@ -126,7 +126,7 @@ function Layout() {
           >
             <TimeLocation />
           </motion.div>
-          <ScrollToTop />
+          {/* <ScrollToTop /> */}
         </div>
         <MobilePageNav />
       </>

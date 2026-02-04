@@ -11,7 +11,7 @@ function MusicToggle() {
 
   const [volume] = useState(() => {
     const storedVolume = localStorage.getItem("volume");
-    return storedVolume ? parseFloat(storedVolume) : 0.03;
+    return storedVolume ? parseFloat(storedVolume) : 0.2;
   });
 
   const [showToggle, setShowToggle] = useState(true);

@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import "./Sidebar.scss";
 import LogoS from "../assets/images/logo-s.avif";
 import LogoSub from "../assets/images/logo-sub.webp";
@@ -28,6 +28,7 @@ const MemoizedVisitorCounter = memo(VisitorCounter);
 
 const Sidebar = () => {
   const [showNav, setShowNav] = useState(false);
+  const location = useLocation();
   const [isMobile, setIsMobile] = useState(
     typeof window !== "undefined" &&
       window.matchMedia("(max-width: 1024px)").matches,
@@ -80,6 +81,10 @@ const Sidebar = () => {
 
   const handleNavClose = useCallback(() => setShowNav(false), []);
   const handleNavOpen = useCallback(() => setShowNav(true), []);
+
+  const isProjectActive =
+    location.pathname === "/project" ||
+    location.pathname.startsWith("/projects/");
 
   const navVariants = {
     open: {
@@ -192,9 +197,8 @@ const Sidebar = () => {
         </NavLink>
         <NavLink
           exact="true"
-          activeclassname="active"
           to="/project"
-          className="project-link"
+          className={`project-link${isProjectActive ? " active" : ""}`}
           aria-label="Projects"
           {...prefetchHandlers("project")}
           onClick={() => {

@@ -62,7 +62,7 @@ export default function NotFound() {
         {isSimilar ? (
           <>
             <p className="notfound-message">
-              Did you mean <strong>{candidate}</strong>?
+              Did you mean <strong>&quot;{candidate}&quot;</strong> ?
             </p>
 
             {ROUTE_META[candidate] && (
