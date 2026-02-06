@@ -234,7 +234,7 @@ For detailed performance optimizations, see [OPTIMIZATION.md](OPTIMIZATION.md).
 ### Performance Targets
 - Lighthouse Score: **90+**
 - First Contentful Paint: **< 1.5s**
-- Time to Interactive: **< 3.5s**
+- Time to Interactive: **< 2.5s**
 
 ## Deployment
 
