@@ -2,7 +2,7 @@
 
 A modern, performant portfolio website showcasing my technical skills, projects, and experience as a **Software Developer** specializing in frontend and backend engineering. Built with React, TypeScript, and modern web technologies, this site features smooth animations, interactive components, and optimized performance.
 
-🔗 **Live Site**: [https://souvik-basak.vercel.app/](https://souvik-basak.vercel.app/)
+🔗 **Live Site**: [https://souvikbasak.in/](https://souvikbasak.vercel.app/)
 
 ## Technologies Used
 
@@ -14,13 +14,6 @@ A modern, performant portfolio website showcasing my technical skills, projects,
 
 ### Animation & Visual Effects
 - **Framer Motion**: Production-ready motion library for React
-- **GSAP**: Professional-grade animation platform
-- **React Spring**: Spring-physics based animations
-- **Animate.css**: Cross-browser CSS animations
-- **Loaders.css**: Pre-loader animations
-- **React Parallax Tilt**: 3D tilt effects
-- **Vanta.js**: Animated 3D backgrounds
-- **Three.js**: 3D graphics library
 
 ### UI Components & Icons
 - **Font Awesome**: Comprehensive icon library (brands & solid icons)
@@ -46,12 +39,11 @@ A modern, performant portfolio website showcasing my technical skills, projects,
 
 - **⚡ Blazing Fast Performance**: Built with Vite for optimal load times and Core Web Vitals
 - **🎨 Animated Landing Page**: Smooth, eye-catching animations with Framer Motion and GSAP
-- **💼 Skills Showcase**: Interactive skills section with drag-and-drop animations
+- **💼 Skills Showcase**: Interactive skills section
 - **📁 Projects Gallery**: Detailed showcase of professional projects with filtering
 - **📧 Contact Form**: Direct messaging via EmailJS integration
 - **📍 Interactive Map**: Location display using React Leaflet
 - **👁️ Visitor Counter**: Real-time visitor tracking powered by Supabase
-- **🎭 3D Effects**: Parallax tilt effects for enhanced user engagement
 - **📱 Fully Responsive**: Optimized for all devices and screen sizes
 - **🔍 SEO Optimized**: Meta tags, Open Graph, and structured data for better discoverability
 - **♿ Accessible**: Built with accessibility best practices
@@ -196,16 +188,12 @@ Here are the main libraries and dependencies used:
 ### Styling & Animation
 - [**SASS**](https://sass-lang.com/) - CSS preprocessor
 - [**Framer Motion**](https://www.framer.com/motion/) - Production-ready animations
-- [**GSAP**](https://greensock.com/gsap/) - Professional animation library
-- [**React Spring**](https://www.react-spring.dev/) - Spring physics animations
-- [**Animate.css**](https://animate.style/) - CSS animations
 
 ### UI & Components
 - [**Font Awesome**](https://fontawesome.com/) - Icon library
 - [**React Icons**](https://react-icons.github.io/react-icons/) - SVG icons
 - [**React Leaflet**](https://react-leaflet.js.org/) - Maps integration
 - [**React Loaders**](https://github.com/jonjaques/react-loaders) - Loading animations
-- [**React Parallax Tilt**](https://www.npmjs.com/package/react-parallax-tilt) - 3D tilt effects
 - [**React Hot Toast**](https://react-hot-toast.com/) - Toast notifications
 
 ### Backend & Services
@@ -276,15 +264,13 @@ This is a personal portfolio website, so contributions are not currently accepte
 ## Author
 
 **Souvik Basak**
-- Portfolio: [souvik-basak.vercel.app](https://souvik-basak.vercel.app/)
+- Portfolio: [souvikbasak.in](https://souvikbasak.vercel.app/)
 - GitHub: [@souvik-basak](https://github.com/souvik-basak)
-- LinkedIn: [linkedin.com/in/souvik-basak](https://www.linkedin.com/in/souvik-basak)
-- Twitter: [@souvik_basak](https://twitter.com/souvik_basak)
+- LinkedIn: [linkedin.com/in/isouvikbasak](https://www.linkedin.com/in/isouvikbasak)
+- Twitter: [@souvik_basak](https://twitter.com/souvikbasak0)
 
 ## Acknowledgments
 
-- Vanta.js for background effects
-- Three.js for 3D graphics
 - All the amazing open-source libraries used in this project
 
 ## License
