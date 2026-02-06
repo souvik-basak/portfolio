@@ -19,6 +19,8 @@ A modern, performant portfolio website showcasing my technical skills, projects,
 - **Animate.css**: Cross-browser CSS animations
 - **Loaders.css**: Pre-loader animations
 - **React Parallax Tilt**: 3D tilt effects
+- **Vanta.js**: Animated 3D backgrounds
+- **Three.js**: 3D graphics library
 
 ### UI Components & Icons
 - **Font Awesome**: Comprehensive icon library (brands & solid icons)
